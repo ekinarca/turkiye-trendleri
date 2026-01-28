@@ -54,6 +54,14 @@ const breadcrumbItems = buildArchiveBreadcrumb(yil, monthNumber, gun);
 
 const formattedDate = formatArchiveDate(yil, monthNumber, gun);
 const monthName = TURKISH_MONTHS[monthNumber];
+
+// Kategori dağılımını hesapla (frontmatter'da type-safe olarak)
+const categoryDistribution: Record<string, number> = {};
+for (const post of dayPosts) {
+  const cat = post.data.category;
+  categoryDistribution[cat] = (categoryDistribution[cat] || 0) + 1;
+}
+const categoryEntries = Object.entries(categoryDistribution);
 ---
 
 <BaseLayout 
@@ -84,14 +92,9 @@ const monthName = TURKISH_MONTHS[monthNumber];
     </header>
 
     <!-- Kategorilere Göre Dağılım -->
-    {dayPosts.length > 0 && (
+    {categoryEntries.length > 0 && (
       <div class="category-summary">
-        {Object.entries(
-          dayPosts.reduce((acc, post) => {
-            acc[post.data.category] = (acc[post.data.category] || 0) + 1;
-            return acc;
-          }, {} as Record<string, number>)
-        ).map(([cat, count]) => (
+        {categoryEntries.map(([cat, count]) => (
           <span class="cat-badge">
             {cat}: {count}
           </span>

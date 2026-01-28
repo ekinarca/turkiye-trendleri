@@ -25,6 +25,10 @@ const breadcrumbItems = [
   { label: 'Ana Sayfa', href: '/' },
   { label: 'Arşiv', href: '/arsiv' },
 ];
+
+// Kategori dağılımını sırala (frontmatter'da type-safe olarak)
+const sortedCategoryDistribution = Object.entries(stats.categoryDistribution)
+  .sort((a, b) => b[1] - a[1]);
 ---
 
 <BaseLayout title="Arşiv" description="Tüm haberler tarih sırasına göre arşivlenmiş">
@@ -56,23 +60,20 @@ const breadcrumbItems = [
     <section class="distribution-section">
       <h2>📊 Kategori Dağılımı</h2>
       <div class="category-bars">
-        {Object.entries(stats.categoryDistribution)
-          .sort((a, b) => b[1] - a[1])
-          .map(([cat, count]) => {
-            const percentage = Math.round((count / stats.totalPosts) * 100);
-            return (
-              <div class="category-bar">
-                <div class="bar-label">
-                  <span>{cat}</span>
-                  <span class="count">{count}</span>
-                </div>
-                <div class="bar-track">
-                  <div class="bar-fill" style={`width: ${percentage}%`}></div>
-                </div>
+        {sortedCategoryDistribution.map(([cat, count]) => {
+          const percentage = Math.round((count / stats.totalPosts) * 100);
+          return (
+            <div class="category-bar">
+              <div class="bar-label">
+                <span>{cat}</span>
+                <span class="count">{count}</span>
               </div>
-            );
-          })
-        }
+              <div class="bar-track">
+                <div class="bar-fill" style={`width: ${percentage}%`}></div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
 
