@@ -12,51 +12,81 @@ import type { Trend, TrendSnapshot } from './types.js';
 export type { Trend, TrendSnapshot };
 
 // Google Trends Daily Trends RSS endpoint (Türkiye)
-const TRENDS_RSS_URL = 'https://trends.google.com/trends/trendingsearches/daily/rss?geo=TR';
+const TRENDS_RSS_URL = 'https://trends.google.com/trending/rss?geo=TR';
+
+// Alternatif RSS URL'leri
+const ALT_RSS_URLS = [
+  'https://trends.google.com/trends/trendingsearches/daily/rss?geo=TR',
+  'https://trends.google.co.uk/trending/rss?geo=TR',
+];
 
 // Alternatif: Google Trends realtime JSON (resmi olmayan)
 const TRENDS_JSON_URL = 'https://trends.google.com/trends/api/dailytrends?hl=tr&tz=-180&geo=TR&ns=15';
+
+// Yedek: Türkiye'nin popüler haber konuları (statik fallback)
+const FALLBACK_TOPICS = [
+  'Galatasaray', 'Fenerbahçe', 'Beşiktaş', 'Trabzonspor',
+  'dolar kuru', 'altın fiyatları', 'hava durumu',
+  'TBMM', 'deprem', 'seçim', 'enflasyon',
+];
 
 /**
  * RSS'ten günlük trendleri çeker
  */
 async function fetchFromRSS(): Promise<Trend[]> {
-  console.log('  → RSS endpoint deneniyor...');
+  const allUrls = [TRENDS_RSS_URL, ...ALT_RSS_URLS];
   
-  try {
-    const response = await fetchWithRetry(TRENDS_RSS_URL, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
-        'Accept': 'application/rss+xml, application/xml, text/xml',
-        'Accept-Language': 'tr-TR,tr;q=0.9',
-      },
-    });
-
-    const xml = await response.text();
+  for (const url of allUrls) {
+    console.log(`  → RSS deneniyor: ${url.slice(0, 60)}...`);
     
-    // Basit XML parsing (item elementlerini çıkar)
-    const items: Trend[] = [];
-    const itemRegex = /<item>[\s\S]*?<title>([^<]+)<\/title>[\s\S]*?<\/item>/g;
-    let match;
-    let rank = 1;
+    try {
+      const response = await fetchWithRetry(url, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+          'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+          'Accept-Encoding': 'gzip, deflate, br',
+          'Cache-Control': 'no-cache',
+        },
+      });
 
-    while ((match = itemRegex.exec(xml)) !== null) {
-      const query = match[1].trim();
-      if (query && query.length > 1) {
-        items.push({
-          query,
-          rank,
-          timestamp: nowISOTurkey(),
-        });
-        rank++;
+      const xml = await response.text();
+      
+      // HTML dönüyorsa atla
+      if (xml.includes('<!doctype') || xml.includes('<!DOCTYPE')) {
+        console.log('    ⚠️ HTML döndü, RSS değil');
+        continue;
       }
-    }
+      
+      // Basit XML parsing (item elementlerini çıkar)
+      const items: Trend[] = [];
+      const itemRegex = /<item>[\s\S]*?<title>([^<]+)<\/title>[\s\S]*?<\/item>/g;
+      let match;
+      let rank = 1;
 
-    return items;
-  } catch (error) {
-    console.log('  ⚠️ RSS başarısız:', error instanceof Error ? error.message : 'Bilinmeyen hata');
-    return [];
+      while ((match = itemRegex.exec(xml)) !== null) {
+        const query = match[1].trim();
+        if (query && query.length > 1) {
+          items.push({
+            query,
+            rank,
+            timestamp: nowISOTurkey(),
+          });
+          rank++;
+        }
+      }
+
+      if (items.length > 0) {
+        return items;
+      }
+    } catch (error) {
+      console.log(`    ⚠️ Başarısız: ${error instanceof Error ? error.message : 'Bilinmeyen hata'}`);
+    }
+    
+    await sleep(1000);
   }
+  
+  return [];
 }
 
 /**
@@ -136,17 +166,98 @@ function saveTrendsSnapshot(trends: Trend[]): void {
 }
 
 /**
+ * Google News'ten güncel Türk haberlerinden trend çıkar
+ */
+async function fetchFromGoogleNews(): Promise<Trend[]> {
+  console.log('  → Google News TR deneniyor...');
+  
+  try {
+    const response = await fetchWithRetry('https://news.google.com/rss?hl=tr&gl=TR&ceid=TR:tr', {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'application/rss+xml, application/xml, text/xml',
+        'Accept-Language': 'tr-TR,tr;q=0.9',
+      },
+    });
+
+    const xml = await response.text();
+    
+    if (xml.includes('<!doctype') || xml.includes('<!DOCTYPE')) {
+      console.log('    ⚠️ HTML döndü');
+      return [];
+    }
+    
+    // Başlıklardan anahtar kelimeleri çıkar
+    const items: Trend[] = [];
+    const titleRegex = /<title>([^<]+)<\/title>/g;
+    let match;
+    let rank = 1;
+    const seen = new Set<string>();
+
+    while ((match = titleRegex.exec(xml)) !== null && items.length < 20) {
+      const title = match[1].trim();
+      // RSS başlığını ve genel başlıkları atla
+      if (title.includes('Google') || title.length < 10 || title.length > 100) continue;
+      
+      // Ana konuyu çıkar (genellikle başlıktaki ilk 2-4 kelime)
+      const words = title.split(/[\s,:\-–]+/).filter(w => w.length > 2);
+      const topic = words.slice(0, 3).join(' ');
+      
+      if (topic.length > 3 && !seen.has(topic.toLowerCase())) {
+        seen.add(topic.toLowerCase());
+        items.push({
+          query: topic,
+          rank,
+          timestamp: nowISOTurkey(),
+        });
+        rank++;
+      }
+    }
+
+    return items;
+  } catch (error) {
+    console.log(`    ⚠️ Başarısız: ${error instanceof Error ? error.message : 'Bilinmeyen hata'}`);
+    return [];
+  }
+}
+
+/**
+ * Yedek statik trendler
+ */
+function getFallbackTrends(): Trend[] {
+  console.log('  → Yedek trend listesi kullanılıyor...');
+  
+  // Rastgele sıralama ve seçim
+  const shuffled = [...FALLBACK_TOPICS].sort(() => Math.random() - 0.5);
+  
+  return shuffled.slice(0, 10).map((query, index) => ({
+    query,
+    rank: index + 1,
+    timestamp: nowISOTurkey(),
+  }));
+}
+
+/**
  * Ana fonksiyon: Trendleri çek ve kaydet
  */
 export async function fetchTrends(): Promise<Trend[]> {
   console.log('  🌐 Google Trends Türkiye verileri çekiliyor...');
   
-  // Önce JSON dene, başarısız olursa RSS
+  // Sırasıyla dene: JSON → RSS → Google News → Fallback
   let trends = await fetchFromJSON();
   
   if (trends.length === 0) {
-    await sleep(2000); // Rate limiting için bekle
+    await sleep(1000);
     trends = await fetchFromRSS();
+  }
+  
+  if (trends.length === 0) {
+    await sleep(1000);
+    trends = await fetchFromGoogleNews();
+  }
+  
+  if (trends.length === 0) {
+    trends = getFallbackTrends();
   }
 
   // İlk 30 trendi al
