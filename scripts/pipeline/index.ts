@@ -10,7 +10,7 @@ import { updateHealth, logRun } from './utils/logging.js';
 import { nowISOTurkey, formatDateForFile, formatTimeForFile } from './utils/date.js';
 
 const DRY_RUN = process.env.DRY_RUN === 'true';
-const MAX_ARTICLES = parseInt(process.env.MAX_ARTICLES || '5', 10);
+const MAX_ARTICLES = parseInt(process.env.MAX_ARTICLES || '15', 10);
 
 async function main() {
   const startTime = Date.now();

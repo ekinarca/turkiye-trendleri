@@ -23,7 +23,7 @@ on:
       max_articles:
         description: 'Maksimum makale sayısı'
         required: false
-        default: '5'
+        default: '15'
 
 # Yazma izni
 permissions:
@@ -52,7 +52,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
-          MAX_ARTICLES: ${{ github.event.inputs.max_articles || '5' }}
+          MAX_ARTICLES: ${{ github.event.inputs.max_articles || '15' }}
         run: npm run autopublish
       
       - name: 📊 Check for changes

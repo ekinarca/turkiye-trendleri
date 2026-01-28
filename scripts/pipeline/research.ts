@@ -216,7 +216,7 @@ export async function researchTrends(trends: Trend[], maxArticles: number): Prom
   }
 
   const bundles: ResearchBundle[] = [];
-  const trendsToResearch = newTrends.slice(0, maxArticles + 5); // Yedek için fazladan al
+  const trendsToResearch = newTrends.slice(0, maxArticles + 10); // Yedek için fazladan al
   
   for (const trend of trendsToResearch) {
     console.log(`\n  🔍 Araştırılıyor: "${trend.query}"`);
@@ -225,7 +225,7 @@ export async function researchTrends(trends: Trend[], maxArticles: number): Prom
     let sources = await searchGoogleNews(trend.query);
     console.log(`    📰 Google News: ${sources.length} sonuç`);
     
-    await sleep(1500); // Rate limiting
+    await sleep(1000); // Rate limiting
     
     // Türk RSS feed'lerden ara
     const turkishSources = await searchTurkishFeeds(trend.query);
@@ -234,8 +234,8 @@ export async function researchTrends(trends: Trend[], maxArticles: number): Prom
     // Birleştir ve benzersizleştir
     sources = dedupeAndScoreSources([...sources, ...turkishSources]);
     
-    // Minimum kaynak kontrolü
-    if (sources.length < 3) {
+    // Minimum kaynak kontrolü (en az 2 kaynak)
+    if (sources.length < 2) {
       console.log(`    ⚠️ Yetersiz kaynak (${sources.length}), atlanıyor`);
       continue;
     }
@@ -257,7 +257,7 @@ export async function researchTrends(trends: Trend[], maxArticles: number): Prom
       break;
     }
     
-    await sleep(2000); // Rate limiting
+    await sleep(1500); // Rate limiting
   }
   
   return bundles;
