@@ -1,0 +1,281 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+import { 
+  getUniqueYears, 
+  filterByYear,
+  getUniqueMonths,
+  filterByMonth,
+  buildArchiveBreadcrumb,
+  TURKISH_MONTHS,
+  MONTH_NUMBER_TO_SLUG,
+  getAdjacentPeriods
+} from '../../../utils/archive';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const years = getUniqueYears(posts);
+  
+  return years.map(year => ({
+    params: { yil: year },
+  }));
+}
+
+const { yil } = Astro.params;
+const allPosts = await getCollection('posts');
+const sortedPosts = allPosts.sort((a, b) => 
+  new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime()
+);
+
+const yearPosts = filterByYear(sortedPosts, yil);
+const months = getUniqueMonths(sortedPosts, yil);
+const { prev, next } = getAdjacentPeriods(sortedPosts, yil);
+
+const breadcrumbItems = buildArchiveBreadcrumb(yil);
+---
+
+<BaseLayout 
+  title={`${yil} Arşivi`} 
+  description={`${yil} yılında yayınlanan tüm haberler`}
+>
+  <div class="archive-page">
+    <Breadcrumb items={breadcrumbItems} />
+    
+    <header class="page-header">
+      <div class="year-nav">
+        {prev && (
+          <a href={`/arsiv/${prev}`} class="nav-link">
+            ← {prev}
+          </a>
+        )}
+        <h1>{yil}</h1>
+        {next && (
+          <a href={`/arsiv/${next}`} class="nav-link">
+            {next} →
+          </a>
+        )}
+      </div>
+      <p>{yearPosts.length} haber yayınlandı</p>
+    </header>
+
+    <!-- Aylara Göre Navigasyon -->
+    <nav class="months-nav">
+      {months.map((month) => {
+        const monthSlug = MONTH_NUMBER_TO_SLUG[month];
+        const monthPosts = filterByMonth(sortedPosts, yil, month);
+        
+        return (
+          <a href={`/arsiv/${yil}/${monthSlug}`} class="month-chip">
+            {TURKISH_MONTHS[month]}
+            <span class="count">{monthPosts.length}</span>
+          </a>
+        );
+      })}
+    </nav>
+
+    <!-- Makaleler -->
+    <section class="articles-section">
+      {months.map((month) => {
+        const monthPosts = filterByMonth(sortedPosts, yil, month);
+        const monthSlug = MONTH_NUMBER_TO_SLUG[month];
+        
+        return (
+          <div class="month-block">
+            <div class="month-header">
+              <a href={`/arsiv/${yil}/${monthSlug}`}>
+                <h2>{TURKISH_MONTHS[month]} {yil}</h2>
+              </a>
+              <span class="month-count">{monthPosts.length} haber</span>
+            </div>
+            
+            <div class="articles-grid">
+              {monthPosts.slice(0, 6).map((post) => (
+                <ArticleCard post={post} />
+              ))}
+            </div>
+            
+            {monthPosts.length > 6 && (
+              <a href={`/arsiv/${yil}/${monthSlug}`} class="see-more">
+                Tümünü gör ({monthPosts.length}) →
+              </a>
+            )}
+          </div>
+        );
+      })}
+    </section>
+
+    {yearPosts.length === 0 && (
+      <div class="empty-state">
+        <p>Bu yılda henüz haber bulunmuyor.</p>
+        <a href="/arsiv" class="back-link">Arşive Dön</a>
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .archive-page {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .year-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .year-nav h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    color: var(--color-link);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: var(--color-bg-secondary);
+    transition: all 0.2s;
+  }
+
+  .nav-link:hover {
+    background: var(--color-border);
+    text-decoration: none;
+  }
+
+  .page-header p {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Months Nav */
+  .months-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+  }
+
+  .month-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    font-size: 0.875rem;
+    color: var(--color-text);
+    transition: all 0.2s;
+  }
+
+  .month-chip:hover {
+    border-color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .month-chip .count {
+    background: var(--color-border);
+    padding: 0.1rem 0.4rem;
+    border-radius: 10px;
+    font-size: 0.75rem;
+  }
+
+  /* Articles */
+  .articles-section {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .month-block {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .month-block:last-child {
+    border-bottom: none;
+  }
+
+  .month-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .month-header a {
+    color: var(--color-text);
+  }
+
+  .month-header a:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .month-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .month-count {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .see-more {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--color-link);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .year-nav h1 {
+      font-size: 2rem;
+    }
+
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,329 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
+import { 
+  groupByYear, 
+  getUniqueYears, 
+  getArchiveStats,
+  TURKISH_MONTHS,
+  getUniqueMonths,
+  filterByYear,
+  MONTH_NUMBER_TO_SLUG
+} from '../../utils/archive';
+
+const allPosts = await getCollection('posts');
+const sortedPosts = allPosts.sort((a, b) => 
+  new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime()
+);
+
+const years = getUniqueYears(sortedPosts);
+const stats = getArchiveStats(sortedPosts);
+const postsByYear = groupByYear(sortedPosts);
+
+const breadcrumbItems = [
+  { label: 'Ana Sayfa', href: '/' },
+  { label: 'Arşiv', href: '/arsiv' },
+];
+---
+
+<BaseLayout title="Arşiv" description="Tüm haberler tarih sırasına göre arşivlenmiş">
+  <div class="archive-page">
+    <Breadcrumb items={breadcrumbItems} />
+    
+    <header class="page-header">
+      <h1>📚 Haber Arşivi</h1>
+      <p>Tüm haberlerimizi tarih sırasına göre keşfedin</p>
+    </header>
+
+    <!-- İstatistikler -->
+    <section class="stats-section">
+      <div class="stat-card">
+        <span class="stat-value">{stats.totalPosts}</span>
+        <span class="stat-label">Toplam Haber</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">{stats.totalYears}</span>
+        <span class="stat-label">Yıl</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">{Object.keys(stats.categoryDistribution).length}</span>
+        <span class="stat-label">Kategori</span>
+      </div>
+    </section>
+
+    <!-- Kategori Dağılımı -->
+    <section class="distribution-section">
+      <h2>📊 Kategori Dağılımı</h2>
+      <div class="category-bars">
+        {Object.entries(stats.categoryDistribution)
+          .sort((a, b) => b[1] - a[1])
+          .map(([cat, count]) => {
+            const percentage = Math.round((count / stats.totalPosts) * 100);
+            return (
+              <div class="category-bar">
+                <div class="bar-label">
+                  <span>{cat}</span>
+                  <span class="count">{count}</span>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill" style={`width: ${percentage}%`}></div>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </section>
+
+    <!-- Yıllara Göre Arşiv -->
+    <section class="years-section">
+      <h2>📅 Yıllara Göre</h2>
+      
+      {years.map((year) => {
+        const yearPosts = postsByYear[year] || [];
+        const months = getUniqueMonths(yearPosts, year);
+        
+        return (
+          <div class="year-block">
+            <div class="year-header">
+              <a href={`/arsiv/${year}`} class="year-link">
+                <h3>{year}</h3>
+                <span class="year-count">{yearPosts.length} haber</span>
+              </a>
+            </div>
+            
+            <div class="months-grid">
+              {months.map((month) => {
+                const monthPosts = yearPosts.filter(p => {
+                  const date = new Date(p.data.publishedAt);
+                  return String(date.getMonth() + 1).padStart(2, '0') === month;
+                });
+                const monthSlug = MONTH_NUMBER_TO_SLUG[month];
+                
+                return (
+                  <a href={`/arsiv/${year}/${monthSlug}`} class="month-card">
+                    <span class="month-name">{TURKISH_MONTHS[month]}</span>
+                    <span class="month-count">{monthPosts.length}</span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </section>
+
+    {years.length === 0 && (
+      <div class="empty-state">
+        <p>Henüz arşivlenmiş haber bulunmuyor.</p>
+        <a href="/" class="home-link">Ana Sayfaya Dön</a>
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .archive-page {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .page-header h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .page-header p {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Stats */
+  .stats-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* Distribution */
+  .distribution-section {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+  }
+
+  .distribution-section h2 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+
+  .category-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .category-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+  }
+
+  .bar-label .count {
+    color: var(--color-text-secondary);
+  }
+
+  .bar-track {
+    height: 8px;
+    background: var(--color-border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 4px;
+    transition: width 0.3s;
+  }
+
+  /* Years */
+  .years-section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .year-block {
+    margin-bottom: 2rem;
+  }
+
+  .year-header {
+    margin-bottom: 1rem;
+  }
+
+  .year-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-text);
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg-secondary);
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+
+  .year-link:hover {
+    background: var(--color-border);
+  }
+
+  .year-link h3 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .year-count {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .months-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.75rem;
+    padding-left: 1rem;
+  }
+
+  .month-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .month-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .month-name {
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .month-count {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    margin-top: 0.25rem;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+  }
+
+  .home-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+
+  @media (max-width: 600px) {
+    .stats-section {
+      grid-template-columns: 1fr;
+    }
+
+    .months-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

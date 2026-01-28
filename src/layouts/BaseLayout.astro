@@ -21,6 +21,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Türkiye Trendleri RSS" href="/rss.xml" />
+    
+    <!-- Slot for additional head content -->
+    <slot name="head" />
+    
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
@@ -138,7 +144,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           <a href="/">Ana Sayfa</a>
           <a href="/trendler">Trendler</a>
           <a href="/kategoriler">Kategoriler</a>
-          <a href="/hakkinda">Hakkında</a>
+          <a href="/arsiv">Arşiv</a>
+          <a href="/ara">🔍</a>
         </nav>
         <button class="nav-toggle" aria-label="Menüyü aç">
           <span></span>
@@ -154,6 +161,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <footer class="site-footer">
       <div class="footer-container">
+        <div class="footer-links">
+          <a href="/hakkinda">Hakkında</a>
+          <a href="/arsiv">Arşiv</a>
+          <a href="/rss.xml">RSS</a>
+        </div>
         <p>© {new Date().getFullYear()} Türkiye Trendleri</p>
         <p class="footer-note">
           Bu site, kamuya açık trend verilerinden otomatik olarak oluşturulmaktadır.
@@ -246,6 +258,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         max-width: var(--max-width);
         margin: 0 auto;
         text-align: center;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer-links a {
+        color: var(--color-text-secondary);
+        font-size: 0.875rem;
+      }
+
+      .footer-links a:hover {
+        color: var(--color-primary);
       }
 
       .footer-note {

@@ -1,0 +1,62 @@
+---
+import { isArchived, isOldArticle, getArticleAge } from '../utils/archive';
+
+interface Props {
+  publishedAt: string;
+  showWarning?: boolean;
+}
+
+const { publishedAt, showWarning = true } = Astro.props;
+
+const age = getArticleAge(publishedAt);
+const archived = isArchived(publishedAt);
+const old = isOldArticle(publishedAt);
+---
+
+{archived && (
+  <span class="archive-badge" title={`Bu haber ${age} gün önce yayınlandı`}>
+    📅 Arşiv
+  </span>
+)}
+
+{showWarning && old && (
+  <div class="old-article-warning">
+    <span class="icon">⏰</span>
+    <span>Bu haber <strong>{age} gün önce</strong> yayınlandı. Bilgiler güncelliğini kaybetmiş olabilir.</span>
+  </div>
+)}
+
+<style>
+  .archive-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+  }
+
+  .old-article-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #fff8e6;
+    border: 1px solid #f0c36d;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    margin: 1rem 0;
+  }
+
+  .old-article-warning .icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .old-article-warning strong {
+    color: var(--color-text);
+  }
+</style>

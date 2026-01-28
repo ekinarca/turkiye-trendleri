@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const breadcrumbItems = [
+  { label: 'Ana Sayfa', href: '/' },
+  { label: 'Arama', href: '/ara' },
+];
+---
+
+<BaseLayout title="Arama" description="Türkiye Trendleri'nde haber arayın">
+  <div class="search-page">
+    <Breadcrumb items={breadcrumbItems} />
+    
+    <header class="page-header">
+      <h1>🔍 Haber Ara</h1>
+      <p>Tüm haberlerde arama yapın</p>
+    </header>
+
+    <div class="search-container">
+      <div id="search"></div>
+    </div>
+
+    <div class="search-tips">
+      <h2>Arama İpuçları</h2>
+      <ul>
+        <li><strong>Tek kelime:</strong> "ekonomi" - ekonomi ile ilgili tüm haberler</li>
+        <li><strong>Çoklu kelime:</strong> "dolar kuru" - her iki kelimeyi içeren haberler</li>
+        <li><strong>Kategori:</strong> Kategorilere göre filtrelemek için <a href="/kategoriler">Kategoriler</a> sayfasını kullanın</li>
+        <li><strong>Tarih:</strong> Belirli tarihlerdeki haberlere <a href="/arsiv">Arşiv</a>'den ulaşabilirsiniz</li>
+      </ul>
+    </div>
+
+    <div class="quick-links">
+      <h2>Hızlı Erişim</h2>
+      <div class="links-grid">
+        <a href="/kategoriler/ekonomi" class="quick-link">💰 Ekonomi</a>
+        <a href="/kategoriler/spor" class="quick-link">⚽ Spor</a>
+        <a href="/kategoriler/teknoloji" class="quick-link">💻 Teknoloji</a>
+        <a href="/kategoriler/siyaset" class="quick-link">🏛️ Siyaset</a>
+        <a href="/arsiv" class="quick-link">📚 Arşiv</a>
+        <a href="/trendler" class="quick-link">📈 Trendler</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<!-- Pagefind UI -->
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+<script src="/pagefind/pagefind-ui.js" is:inline></script>
+
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', () => {
+    new PagefindUI({ 
+      element: "#search",
+      showSubResults: true,
+      showImages: false,
+      translations: {
+        placeholder: "Haber ara...",
+        zero_results: "Sonuç bulunamadı: [SEARCH_TERM]",
+        many_results: "[COUNT] sonuç bulundu",
+        one_result: "1 sonuç bulundu",
+        alt_search: "Sonuç bulunamadı. [SEARCH_TERM] için alternatif arama yapmak ister misiniz?",
+        search_label: "Bu sitede ara",
+        filters_label: "Filtreler",
+        clear_search: "Temizle",
+        load_more: "Daha fazla yükle",
+      }
+    });
+  });
+</script>
+
+<style>
+  .search-page {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .page-header h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .page-header p {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .search-container {
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+  }
+
+  /* Pagefind UI Overrides */
+  .search-container :global(.pagefind-ui__search-input) {
+    font-size: 1.125rem;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    border: 2px solid var(--color-border);
+  }
+
+  .search-container :global(.pagefind-ui__search-input:focus) {
+    border-color: var(--color-primary);
+    outline: none;
+  }
+
+  .search-container :global(.pagefind-ui__result) {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-container :global(.pagefind-ui__result:hover) {
+    background: white;
+  }
+
+  .search-container :global(.pagefind-ui__result-link) {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .search-container :global(.pagefind-ui__result-link:hover) {
+    color: var(--color-primary);
+  }
+
+  .search-tips {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f0f7ff;
+    border-radius: 12px;
+    border: 1px solid #c8e1ff;
+  }
+
+  .search-tips h2 {
+    font-size: 1rem;
+    margin: 0 0 1rem;
+    color: #0366d6;
+  }
+
+  .search-tips ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .search-tips li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .search-tips a {
+    color: #0366d6;
+  }
+
+  .quick-links h2 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .quick-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+
+  .quick-link:hover {
+    text-decoration: none;
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 600px) {
+    .links-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

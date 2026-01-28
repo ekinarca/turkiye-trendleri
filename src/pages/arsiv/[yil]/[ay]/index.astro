@@ -1,0 +1,312 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../../components/Breadcrumb.astro';
+import ArticleCard from '../../../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+import { 
+  getUniqueYears, 
+  getUniqueMonths,
+  getUniqueDays,
+  filterByMonth,
+  filterByDay,
+  buildArchiveBreadcrumb,
+  TURKISH_MONTHS,
+  MONTH_SLUG_TO_NUMBER,
+  MONTH_NUMBER_TO_SLUG,
+  getAdjacentPeriods
+} from '../../../../utils/archive';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const paths: { params: { yil: string; ay: string } }[] = [];
+  
+  const years = getUniqueYears(posts);
+  
+  for (const year of years) {
+    const months = getUniqueMonths(posts, year);
+    for (const month of months) {
+      const monthSlug = MONTH_NUMBER_TO_SLUG[month];
+      paths.push({
+        params: { yil: year, ay: monthSlug },
+      });
+    }
+  }
+  
+  return paths;
+}
+
+const { yil, ay } = Astro.params;
+const monthNumber = MONTH_SLUG_TO_NUMBER[ay];
+
+const allPosts = await getCollection('posts');
+const sortedPosts = allPosts.sort((a, b) => 
+  new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime()
+);
+
+const monthPosts = filterByMonth(sortedPosts, yil, monthNumber);
+const days = getUniqueDays(sortedPosts, yil, monthNumber);
+const { prev, next } = getAdjacentPeriods(sortedPosts, yil, monthNumber);
+
+const breadcrumbItems = buildArchiveBreadcrumb(yil, monthNumber);
+
+const monthName = TURKISH_MONTHS[monthNumber];
+---
+
+<BaseLayout 
+  title={`${monthName} ${yil} Arşivi`} 
+  description={`${monthName} ${yil} tarihinde yayınlanan tüm haberler`}
+>
+  <div class="archive-page">
+    <Breadcrumb items={breadcrumbItems} />
+    
+    <header class="page-header">
+      <div class="month-nav">
+        {prev && (
+          <a href={`/arsiv/${yil}/${MONTH_NUMBER_TO_SLUG[prev]}`} class="nav-link">
+            ← {TURKISH_MONTHS[prev]}
+          </a>
+        )}
+        <div class="title-group">
+          <h1>{monthName}</h1>
+          <a href={`/arsiv/${yil}`} class="year-link">{yil}</a>
+        </div>
+        {next && (
+          <a href={`/arsiv/${yil}/${MONTH_NUMBER_TO_SLUG[next]}`} class="nav-link">
+            {TURKISH_MONTHS[next]} →
+          </a>
+        )}
+      </div>
+      <p>{monthPosts.length} haber yayınlandı</p>
+    </header>
+
+    <!-- Günlere Göre Navigasyon -->
+    {days.length > 1 && (
+      <nav class="days-nav">
+        <span class="days-label">Günler:</span>
+        <div class="days-list">
+          {days.map((day) => {
+            const dayPosts = filterByDay(sortedPosts, yil, monthNumber, day);
+            return (
+              <a href={`/arsiv/${yil}/${ay}/${day}`} class="day-chip">
+                {parseInt(day, 10)}
+                <span class="count">{dayPosts.length}</span>
+              </a>
+            );
+          })}
+        </div>
+      </nav>
+    )}
+
+    <!-- Makaleler -->
+    <section class="articles-section">
+      {days.map((day) => {
+        const dayPosts = filterByDay(sortedPosts, yil, monthNumber, day);
+        
+        return (
+          <div class="day-block">
+            <div class="day-header">
+              <a href={`/arsiv/${yil}/${ay}/${day}`}>
+                <h2>{parseInt(day, 10)} {monthName} {yil}</h2>
+              </a>
+              <span class="day-count">{dayPosts.length} haber</span>
+            </div>
+            
+            <div class="articles-grid">
+              {dayPosts.map((post) => (
+                <ArticleCard post={post} />
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </section>
+
+    {monthPosts.length === 0 && (
+      <div class="empty-state">
+        <p>Bu ayda henüz haber bulunmuyor.</p>
+        <a href={`/arsiv/${yil}`} class="back-link">← {yil} Arşivine Dön</a>
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .archive-page {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .month-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .title-group {
+    text-align: center;
+  }
+
+  .title-group h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  .year-link {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+  }
+
+  .year-link:hover {
+    color: var(--color-primary);
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    color: var(--color-link);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: var(--color-bg-secondary);
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    background: var(--color-border);
+    text-decoration: none;
+  }
+
+  .page-header p {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Days Nav */
+  .days-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    overflow-x: auto;
+  }
+
+  .days-label {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+  }
+
+  .days-list {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .day-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.4rem 0.75rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: var(--color-text);
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .day-chip:hover {
+    border-color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .day-chip .count {
+    background: var(--color-border);
+    padding: 0.1rem 0.3rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+  }
+
+  /* Articles */
+  .articles-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .day-block {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .day-block:last-child {
+    border-bottom: none;
+  }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .day-header a {
+    color: var(--color-text);
+  }
+
+  .day-header a:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .day-header h2 {
+    margin: 0;
+    font-size: 1.125rem;
+  }
+
+  .day-count {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-link);
+  }
+
+  @media (max-width: 768px) {
+    .month-nav {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

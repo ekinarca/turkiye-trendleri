@@ -109,6 +109,33 @@ const categories = [...new Set(sortedPosts.map(p => p.data.category))];
     </section>
   )}
 
+  <!-- Arşiv ve Arama -->
+  <section class="section quick-access">
+    <div class="quick-access-cards">
+      <a href="/arsiv" class="quick-card">
+        <span class="quick-icon">📚</span>
+        <div class="quick-content">
+          <h3>Haber Arşivi</h3>
+          <p>Tüm haberleri tarih sırasına göre keşfedin</p>
+        </div>
+      </a>
+      <a href="/ara" class="quick-card">
+        <span class="quick-icon">🔍</span>
+        <div class="quick-content">
+          <h3>Arama</h3>
+          <p>Haberlerde arama yapın</p>
+        </div>
+      </a>
+      <a href="/rss.xml" class="quick-card" target="_blank">
+        <span class="quick-icon">📡</span>
+        <div class="quick-content">
+          <h3>RSS Feed</h3>
+          <p>Haberleri RSS ile takip edin</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
 </BaseLayout>
 
 <style>
@@ -302,6 +329,48 @@ const categories = [...new Set(sortedPosts.map(p => p.data.category))];
     background: var(--color-bg-secondary);
     border-radius: 12px;
     color: var(--color-text-secondary);
+  }
+
+  /* Quick Access */
+  .quick-access-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .quick-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    color: var(--color-text);
+    transition: all 0.2s;
+  }
+
+  .quick-card:hover {
+    text-decoration: none;
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+
+  .quick-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .quick-content h3 {
+    font-size: 1rem;
+    margin: 0 0 0.25rem;
+  }
+
+  .quick-content p {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    margin: 0;
   }
 
   @media (max-width: 768px) {
