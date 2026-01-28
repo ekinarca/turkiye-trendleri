@@ -1,0 +1,56 @@
+{
+  "fetchedAt": "2026-01-28T13:10:00+03:00",
+  "region": "TR",
+  "trends": [
+    {
+      "query": "sinop toki kura sonuçları",
+      "rank": 1,
+      "timestamp": "2026-01-28T13:10:00+03:00"
+    },
+    {
+      "query": "muş spor",
+      "rank": 2,
+      "timestamp": "2026-01-28T13:10:00+03:00"
+    },
+    {
+      "query": "muşspor",
+      "rank": 3,
+      "timestamp": "2026-01-28T13:10:00+03:00"
+    },
+    {
+      "query": "su kesintisi",
+      "rank": 4,
+      "timestamp": "2026-01-28T13:10:00+03:00"
+    },
+    {
+      "query": "iddia",
+      "rank": 5,
+      "timestamp": "2026-01-28T13:10:00+03:00"
+    },
+    {
+      "query": "iski su kesintisi",
+      "rank": 6,
+      "timestamp": "2026-01-28T13:10:00+03:00"
+    },
+    {
+      "query": "didem balçın",
+      "rank": 7,
+      "timestamp": "2026-01-28T13:10:00+03:00"
+    },
+    {
+      "query": "sinan sardoğan",
+      "rank": 8,
+      "timestamp": "2026-01-28T13:10:00+03:00"
+    },
+    {
+      "query": "çilekeş bilet",
+      "rank": 9,
+      "timestamp": "2026-01-28T13:10:00+03:00"
+    },
+    {
+      "query": "mika raun",
+      "rank": 10,
+      "timestamp": "2026-01-28T13:10:00+03:00"
+    }
+  ]
+}
