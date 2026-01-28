@@ -1,0 +1,298 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '../../utils/date';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const { title, summary, category, tags, readingTime, publishedAt, sources, trendQuery } = post.data;
+---
+
+<BaseLayout title={title} description={summary}>
+  <article class="article-page">
+    <header class="article-header">
+      <div class="article-meta-top">
+        <a href={`/kategoriler/${category.toLowerCase().replace('ğ', 'g').replace('ı', 'i').replace('ş', 's')}`} class="category-badge">
+          {category}
+        </a>
+        <span class="trend-badge">📈 {trendQuery}</span>
+      </div>
+      
+      <h1>{title}</h1>
+      
+      <p class="summary">{summary}</p>
+      
+      <div class="article-info">
+        <time datetime={publishedAt}>
+          🗓️ {formatDate(publishedAt)}
+        </time>
+        <span>⏱️ {readingTime} dakika okuma</span>
+        <span>📰 {sources.length} kaynak</span>
+      </div>
+
+      {tags.length > 0 && (
+        <div class="tags">
+          {tags.map((tag) => (
+            <span class="tag">#{tag}</span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <div class="article-content">
+      <Content />
+    </div>
+
+    <footer class="article-footer">
+      <section class="sources-section">
+        <h2>📚 Kaynaklar</h2>
+        <p class="sources-note">
+          Bu haber aşağıdaki kaynaklardan derlenen bilgilere dayanarak oluşturulmuştur:
+        </p>
+        <ul class="sources-list">
+          {sources.map((source) => (
+            <li>
+              <a href={source.url} target="_blank" rel="noopener noreferrer">
+                {source.title}
+              </a>
+              {source.publisher && <span class="publisher">— {source.publisher}</span>}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <div class="disclaimer">
+        <strong>⚠️ Uyarı:</strong> Bu içerik yapay zeka tarafından otomatik olarak oluşturulmuştur. 
+        Bilgilerin doğruluğunu yukarıdaki kaynaklardan kontrol etmenizi öneririz.
+      </div>
+
+      <nav class="article-nav">
+        <a href="/" class="nav-link">← Ana Sayfa</a>
+        <a href="/trendler" class="nav-link">Tüm Trendler →</a>
+      </nav>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-page {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .article-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .article-meta-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .category-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-primary);
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border-radius: 20px;
+  }
+
+  .category-badge:hover {
+    text-decoration: none;
+    background: var(--color-primary-dark);
+  }
+
+  .trend-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    font-size: 0.8125rem;
+    border-radius: 20px;
+    color: var(--color-text-secondary);
+  }
+
+  .article-header h1 {
+    font-size: 2rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .summary {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .article-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.8125rem;
+    color: var(--color-link);
+    background: rgba(0, 102, 204, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  /* Article Content Styling */
+  .article-content {
+    line-height: 1.8;
+    font-size: 1.0625rem;
+  }
+
+  .article-content :global(h2) {
+    font-size: 1.375rem;
+    margin: 2rem 0 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .article-content :global(h3) {
+    font-size: 1.125rem;
+    margin: 1.5rem 0 0.75rem;
+  }
+
+  .article-content :global(p) {
+    margin-bottom: 1.25rem;
+  }
+
+  .article-content :global(ul),
+  .article-content :global(ol) {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .article-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .article-content :global(blockquote) {
+    border-left: 4px solid var(--color-primary);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+
+  .article-content :global(strong) {
+    font-weight: 600;
+  }
+
+  /* Footer */
+  .article-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--color-border);
+  }
+
+  .sources-section {
+    margin-bottom: 2rem;
+  }
+
+  .sources-section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sources-note {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .sources-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .sources-list li {
+    padding: 0.75rem;
+    background: var(--color-bg-secondary);
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .sources-list a {
+    font-weight: 500;
+  }
+
+  .publisher {
+    color: var(--color-text-secondary);
+    font-size: 0.8125rem;
+  }
+
+  .disclaimer {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 0.875rem;
+    margin-bottom: 2rem;
+  }
+
+  .article-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1.25rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .nav-link:hover {
+    text-decoration: none;
+    border-color: var(--color-primary);
+    background: white;
+  }
+
+  @media (max-width: 768px) {
+    .article-header h1 {
+      font-size: 1.5rem;
+    }
+
+    .summary {
+      font-size: 1rem;
+    }
+
+    .article-info {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>

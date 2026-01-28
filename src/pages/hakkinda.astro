@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Hakkında" description="Türkiye Trendleri sitesi hakkında bilgi">
+  <div class="about-page">
+    <header class="page-header">
+      <h1>Hakkında</h1>
+    </header>
+
+    <div class="content">
+      <section class="section">
+        <h2>Bu Site Nedir?</h2>
+        <p>
+          <strong>Türkiye Trendleri</strong>, Türkiye'deki Google Trends verilerini takip eden 
+          ve bu trendler hakkında otomatik olarak haber içeriği üreten bir sitedir.
+        </p>
+        <p>
+          Site tamamen otomatik çalışır: Günde üç kez (sabah, öğle ve akşam) Google Trends'ten 
+          Türkiye'deki popüler arama trendlerini çeker, bu trendler hakkında güvenilir 
+          kaynaklardan bilgi toplar ve yapay zeka yardımıyla özgün Türkçe haberler oluşturur.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Nasıl Çalışır?</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step-number">1</span>
+            <div class="step-content">
+              <h3>Trend Tespiti</h3>
+              <p>Google Trends'ten Türkiye'de yükselen arama trendleri otomatik olarak çekilir.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <div class="step-content">
+              <h3>Kaynak Araştırması</h3>
+              <p>Her trend için Google Haberler ve Türk haber kaynakları RSS beslemelerinden bilgi toplanır.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <div class="step-content">
+              <h3>İçerik Üretimi</h3>
+              <p>Toplanan kaynaklara dayanarak yapay zeka özgün, tarafsız ve doğrulanabilir haberler yazar.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step-number">4</span>
+            <div class="step-content">
+              <h3>Yayınlama</h3>
+              <p>Oluşturulan içerik otomatik olarak siteye eklenir ve kullanıcıların erişimine açılır.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Şeffaflık İlkesi</h2>
+        <p>
+          Bu site şeffaflık ilkesiyle çalışır. Her haberin altında kullanılan kaynaklar açıkça listelenir. 
+          Okuyucular, haberde yer alan bilgilerin hangi kaynaklardan alındığını görebilir ve 
+          doğrulama yapabilir.
+        </p>
+        <div class="warning-box">
+          <strong>⚠️ Önemli Uyarı:</strong> Bu sitedeki içerikler yapay zeka tarafından otomatik 
+          olarak üretilmektedir. Haberler mümkün olduğunca doğru bilgi sunmaya çalışsa da, 
+          kritik konularda lütfen birincil kaynakları kontrol edin.
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Teknik Detaylar</h2>
+        <ul>
+          <li><strong>Site Altyapısı:</strong> Astro (Statik Site Oluşturucu)</li>
+          <li><strong>Veri Kaynağı:</strong> Google Trends (Türkiye)</li>
+          <li><strong>Haber Kaynakları:</strong> Google Haberler RSS, Türk haber siteleri RSS</li>
+          <li><strong>İçerik Üretimi:</strong> OpenAI GPT modelleri</li>
+          <li><strong>Güncelleme Sıklığı:</strong> Günde 3 kez (00:30, 12:30, 21:30 Türkiye saati)</li>
+          <li><strong>Barındırma:</strong> Netlify</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Geri Bildirim</h2>
+        <p>
+          Site hakkında geri bildirimlerinizi GitHub üzerinden iletebilirsiniz. 
+          Hata bildirimleri ve önerilerinizi bekliyoruz.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .about-page {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .content {
+    line-height: 1.8;
+  }
+
+  .section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section h2 {
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--color-bg-secondary);
+    border-radius: 8px;
+  }
+
+  .step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--color-primary);
+    color: white;
+    font-weight: 700;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .step-content h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .step-content p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+  }
+
+  .warning-box {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    font-size: 0.9375rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  ul li:last-child {
+    border-bottom: none;
+  }
+</style>

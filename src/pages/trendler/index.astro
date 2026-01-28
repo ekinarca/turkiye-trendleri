@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { formatDateShort, formatDate } from '../../utils/date';
+import { format, parseISO, subDays } from 'date-fns';
+import { tr } from 'date-fns/locale';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// Son 7 günün trendlerini al
+const allPosts = await getCollection('posts');
+
+// Trend verilerini oku
+let trendData: Record<string, any[]> = {};
+const trendsDir = path.join(process.cwd(), 'data', 'trends');
+
+if (fs.existsSync(trendsDir)) {
+  const dateFolders = fs.readdirSync(trendsDir).filter(f => /^\d{4}-\d{2}-\d{2}$/.test(f));
+  
+  for (const dateFolder of dateFolders.slice(-7)) {
+    const folderPath = path.join(trendsDir, dateFolder);
+    const files = fs.readdirSync(folderPath).filter(f => f.endsWith('.json'));
+    
+    for (const file of files) {
+      const content = fs.readFileSync(path.join(folderPath, file), 'utf-8');
+      const trends = JSON.parse(content);
+      
+      if (!trendData[dateFolder]) {
+        trendData[dateFolder] = [];
+      }
+      
+      // Benzersiz trendleri ekle
+      for (const trend of trends.trends || []) {
+        const exists = trendData[dateFolder].some(t => t.query === trend.query);
+        if (!exists) {
+          trendData[dateFolder].push(trend);
+        }
+      }
+    }
+  }
+}
+
+// Tarihleri sırala (en yeniden eskiye)
+const sortedDates = Object.keys(trendData).sort().reverse();
+
+// Her trend için yazılmış makaleyi bul
+function findArticleForTrend(query: string): { slug: string; title: string } | null {
+  const article = allPosts.find(p => 
+    p.data.trendQuery.toLowerCase() === query.toLowerCase()
+  );
+  return article ? { slug: article.slug, title: article.data.title } : null;
+}
+---
+
+<BaseLayout title="Trendler" description="Türkiye'deki son 7 günün trend aramaları">
+  <div class="trends-page">
+    <header class="page-header">
+      <h1>📈 Türkiye Trendleri</h1>
+      <p>Son 7 günün Google Trends verileri</p>
+    </header>
+
+    {sortedDates.length > 0 ? (
+      <div class="trends-timeline">
+        {sortedDates.map((date) => {
+          const trends = trendData[date];
+          const formattedDate = format(parseISO(date), "d MMMM yyyy, EEEE", { locale: tr });
+          
+          return (
+            <section class="day-section">
+              <h2 class="day-header">
+                <span class="date-badge">{formattedDate}</span>
+                <span class="trend-count">{trends.length} trend</span>
+              </h2>
+              <div class="trends-list">
+                {trends.map((trend, idx) => {
+                  const article = findArticleForTrend(trend.query);
+                  return (
+                    <div class="trend-item">
+                      <span class="trend-rank">#{idx + 1}</span>
+                      <div class="trend-info">
+                        <span class="trend-query">{trend.query}</span>
+                        {article ? (
+                          <a href={`/haber/${article.slug}`} class="article-link">
+                            📄 {article.title}
+                          </a>
+                        ) : (
+                          <span class="no-article">Makale yazılmadı</span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <p>Henüz trend verisi bulunmuyor.</p>
+        <p class="hint">İlk trend verileri yakında eklenecek.</p>
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .trends-page {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .page-header h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .page-header p {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .trends-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .day-section {
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+  }
+
+  .day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 1rem;
+  }
+
+  .date-badge {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .trend-count {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-weight: normal;
+  }
+
+  .trends-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .trend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: var(--color-bg);
+    border-radius: 8px;
+  }
+
+  .trend-rank {
+    font-weight: 600;
+    color: var(--color-primary);
+    min-width: 2rem;
+  }
+
+  .trend-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .trend-query {
+    font-weight: 500;
+  }
+
+  .article-link {
+    font-size: 0.875rem;
+    color: var(--color-link);
+  }
+
+  .no-article {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+  }
+
+  .empty-state .hint {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+</style>

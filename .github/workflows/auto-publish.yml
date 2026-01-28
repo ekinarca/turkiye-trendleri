@@ -1,0 +1,102 @@
+name: Otomatik Haber Yayınlama
+
+on:
+  # Zamanlı çalışma (UTC)
+  # Türkiye saatleri: 00:30, 12:30, 21:30 (UTC+3)
+  # UTC karşılıkları: 21:30 (önceki gün), 09:30, 18:30
+  schedule:
+    - cron: '30 21 * * *'  # 00:30 TR (önceki gün UTC)
+    - cron: '30 9 * * *'   # 12:30 TR
+    - cron: '30 18 * * *'  # 21:30 TR
+  
+  # Manuel tetikleme
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run modu (makale üretme)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      max_articles:
+        description: 'Maksimum makale sayısı'
+        required: false
+        default: '5'
+
+# Yazma izni
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: 📦 Install dependencies
+        run: npm ci
+      
+      - name: 🚀 Run pipeline
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          MAX_ARTICLES: ${{ github.event.inputs.max_articles || '5' }}
+        run: npm run autopublish
+      
+      - name: 📊 Check for changes
+        id: changes
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: 💾 Commit and push
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Commit mesajı oluştur
+          ARTICLE_COUNT=$(find src/content/posts -name "*.md" -mmin -5 2>/dev/null | wc -l | tr -d ' ')
+          TIMESTAMP=$(TZ='Europe/Istanbul' date '+%Y-%m-%d %H:%M')
+          
+          git commit -m "$(cat <<EOF
+          📰 Otomatik güncelleme: ${TIMESTAMP} TR
+
+          - Yeni makaleler: ${ARTICLE_COUNT}
+          - Trend verileri güncellendi
+          EOF
+          )"
+          
+          git push
+      
+      - name: 📝 Summary
+        run: |
+          echo "## 📊 Pipeline Özeti" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Zaman:** $(TZ='Europe/Istanbul' date '+%Y-%m-%d %H:%M %Z')" >> $GITHUB_STEP_SUMMARY
+          echo "- **Değişiklik:** ${{ steps.changes.outputs.has_changes }}" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f data/health.json ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### Health Status" >> $GITHUB_STEP_SUMMARY
+            echo '```json' >> $GITHUB_STEP_SUMMARY
+            cat data/health.json >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          fi

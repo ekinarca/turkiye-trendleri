@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '../../utils/date';
+
+export async function getStaticPaths() {
+  const categories = [
+    { id: 'ekonomi', name: 'Ekonomi', icon: '💰' },
+    { id: 'spor', name: 'Spor', icon: '⚽' },
+    { id: 'magazin', name: 'Magazin', icon: '🌟' },
+    { id: 'teknoloji', name: 'Teknoloji', icon: '💻' },
+    { id: 'siyaset', name: 'Siyaset', icon: '🏛️' },
+    { id: 'saglik', name: 'Sağlık', icon: '🏥' },
+    { id: 'dunya', name: 'Dünya', icon: '🌍' },
+    { id: 'egitim', name: 'Eğitim', icon: '📚' },
+    { id: 'kripto', name: 'Kripto', icon: '₿' },
+    { id: 'otomotiv', name: 'Otomotiv', icon: '🚗' },
+    { id: 'diger', name: 'Diğer', icon: '📌' },
+  ];
+
+  return categories.map(cat => ({
+    params: { category: cat.id },
+    props: { categoryInfo: cat },
+  }));
+}
+
+const { category } = Astro.params;
+const { categoryInfo } = Astro.props;
+
+const allPosts = await getCollection('posts');
+
+// Kategori eşleştirmesi (Türkçe karakterleri normalize et)
+const normalizeCategory = (cat: string) => 
+  cat.toLowerCase()
+    .replace('ğ', 'g')
+    .replace('ı', 'i')
+    .replace('ş', 's')
+    .replace('ü', 'u')
+    .replace('ö', 'o')
+    .replace('ç', 'c');
+
+const posts = allPosts
+  .filter(p => normalizeCategory(p.data.category) === category)
+  .sort((a, b) => 
+    new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime()
+  );
+---
+
+<BaseLayout 
+  title={`${categoryInfo.name} Haberleri`} 
+  description={`${categoryInfo.name} kategorisindeki son haberler`}
+>
+  <div class="category-page">
+    <header class="page-header">
+      <span class="category-icon">{categoryInfo.icon}</span>
+      <h1>{categoryInfo.name}</h1>
+      <p>{posts.length} haber bulundu</p>
+      <a href="/kategoriler" class="back-link">← Tüm Kategoriler</a>
+    </header>
+
+    {posts.length > 0 ? (
+      <div class="articles-list">
+        {posts.map((post) => (
+          <article class="article-item">
+            <a href={`/haber/${post.slug}`}>
+              <h2>{post.data.title}</h2>
+              <p>{post.data.summary}</p>
+              <div class="article-meta">
+                <time datetime={post.data.publishedAt}>
+                  {formatDate(post.data.publishedAt)}
+                </time>
+                <span>·</span>
+                <span>{post.data.readingTime} dk okuma</span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <p>Bu kategoride henüz haber bulunmuyor.</p>
+        <a href="/" class="home-link">Ana Sayfaya Dön</a>
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .category-page {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .category-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-header h1 {
+    margin-bottom: 0.25rem;
+  }
+
+  .page-header p {
+    color: var(--color-text-secondary);
+    margin: 0 0 1rem;
+  }
+
+  .back-link {
+    font-size: 0.875rem;
+  }
+
+  .articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .article-item {
+    padding: 1.25rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    transition: all 0.2s;
+  }
+
+  .article-item:hover {
+    border-color: var(--color-primary);
+  }
+
+  .article-item a {
+    color: var(--color-text);
+  }
+
+  .article-item a:hover {
+    text-decoration: none;
+  }
+
+  .article-item h2 {
+    font-size: 1.125rem;
+    margin: 0 0 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .article-item:hover h2 {
+    color: var(--color-primary);
+  }
+
+  .article-item p {
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .article-meta {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+  }
+
+  .home-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+
+  .home-link:hover {
+    text-decoration: none;
+    background: var(--color-primary-dark);
+  }
+</style>

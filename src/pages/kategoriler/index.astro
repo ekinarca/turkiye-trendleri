@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts');
+
+const categories = [
+  { id: 'ekonomi', name: 'Ekonomi', icon: '💰' },
+  { id: 'spor', name: 'Spor', icon: '⚽' },
+  { id: 'magazin', name: 'Magazin', icon: '🌟' },
+  { id: 'teknoloji', name: 'Teknoloji', icon: '💻' },
+  { id: 'siyaset', name: 'Siyaset', icon: '🏛️' },
+  { id: 'saglik', name: 'Sağlık', icon: '🏥' },
+  { id: 'dunya', name: 'Dünya', icon: '🌍' },
+  { id: 'egitim', name: 'Eğitim', icon: '📚' },
+  { id: 'kripto', name: 'Kripto', icon: '₿' },
+  { id: 'otomotiv', name: 'Otomotiv', icon: '🚗' },
+  { id: 'diger', name: 'Diğer', icon: '📌' },
+];
+
+const categoryCounts = categories.map(cat => {
+  const count = allPosts.filter(p => 
+    p.data.category.toLowerCase().replace('ğ', 'g').replace('ı', 'i').replace('ş', 's') === cat.id
+  ).length;
+  return { ...cat, count };
+});
+---
+
+<BaseLayout title="Kategoriler" description="Haberleri kategorilere göre keşfedin">
+  <div class="categories-page">
+    <header class="page-header">
+      <h1>📂 Kategoriler</h1>
+      <p>Haberleri konularına göre keşfedin</p>
+    </header>
+
+    <div class="categories-grid">
+      {categoryCounts.map((cat) => (
+        <a href={`/kategoriler/${cat.id}`} class="category-card">
+          <span class="category-icon">{cat.icon}</span>
+          <h2>{cat.name}</h2>
+          <span class="article-count">
+            {cat.count > 0 ? `${cat.count} haber` : 'Henüz haber yok'}
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .categories-page {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .page-header h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .page-header p {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    text-align: center;
+    color: var(--color-text);
+    transition: all 0.2s;
+  }
+
+  .category-card:hover {
+    text-decoration: none;
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+
+  .category-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .category-card h2 {
+    font-size: 1.125rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .article-count {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 600px) {
+    .categories-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .category-card {
+      padding: 1.5rem 1rem;
+    }
+    
+    .category-icon {
+      font-size: 2rem;
+    }
+  }
+</style>
