@@ -1,0 +1,56 @@
+{
+  "fetchedAt": "2026-01-29T00:54:20+03:00",
+  "region": "TR",
+  "trends": [
+    {
+      "query": "barcelona",
+      "rank": 1,
+      "timestamp": "2026-01-29T00:54:20+03:00"
+    },
+    {
+      "query": "sanchez",
+      "rank": 2,
+      "timestamp": "2026-01-29T00:54:20+03:00"
+    },
+    {
+      "query": "davinson",
+      "rank": 3,
+      "timestamp": "2026-01-29T00:54:20+03:00"
+    },
+    {
+      "query": "sporting",
+      "rank": 4,
+      "timestamp": "2026-01-29T00:54:20+03:00"
+    },
+    {
+      "query": "ترتيب دوري أبطال أوروبا",
+      "rank": 5,
+      "timestamp": "2026-01-29T00:54:20+03:00"
+    },
+    {
+      "query": "madrid",
+      "rank": 6,
+      "timestamp": "2026-01-29T00:54:20+03:00"
+    },
+    {
+      "query": "nico gonzález",
+      "rank": 7,
+      "timestamp": "2026-01-29T00:54:20+03:00"
+    },
+    {
+      "query": "anthony gordon",
+      "rank": 8,
+      "timestamp": "2026-01-29T00:54:20+03:00"
+    },
+    {
+      "query": "marmoush",
+      "rank": 9,
+      "timestamp": "2026-01-29T00:54:20+03:00"
+    },
+    {
+      "query": "bilbao",
+      "rank": 10,
+      "timestamp": "2026-01-29T00:54:20+03:00"
+    }
+  ]
+}
