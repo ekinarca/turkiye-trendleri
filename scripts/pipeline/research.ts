@@ -6,26 +6,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { XMLParser } from 'fast-xml-parser';
-import { Trend } from './fetch-trends.js';
+import type { Trend, Source, ResearchBundle } from './types.js';
 import { formatDateForFile, formatTimeForFile, nowISOTurkey } from './utils/date.js';
 import { sleep, fetchWithRetry } from './utils/http.js';
 import { loadState, saveState, isRecentlyPublished } from './utils/state.js';
 import { normalizeQuery, isSimilar } from './utils/text.js';
 
-export interface Source {
-  title: string;
-  url: string;
-  publisher?: string;
-  publishedAt?: string;
-  snippet?: string;
-}
-
-export interface ResearchBundle {
-  query: string;
-  normalizedQuery: string;
-  researchedAt: string;
-  sources: Source[];
-}
+export type { Source, ResearchBundle };
 
 const xmlParser = new XMLParser({
   ignoreAttributes: false,

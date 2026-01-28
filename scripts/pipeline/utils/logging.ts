@@ -5,17 +5,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { formatDateForFile, nowISOTurkey } from './date.js';
+import type { HealthStatus } from '../types.js';
+
+export type { HealthStatus };
 
 const LOGS_DIR = path.join(process.cwd(), 'data', 'logs');
 const HEALTH_FILE = path.join(process.cwd(), 'data', 'health.json');
-
-export interface HealthStatus {
-  lastRun: string;
-  success: boolean;
-  message: string;
-  articlesGenerated: number;
-  consecutiveFailures: number;
-}
 
 /**
  * Çalışma logunu kaydet

@@ -5,19 +5,12 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import type { PublishedTrend, State } from '../types.js';
+
+export type { PublishedTrend, State };
 
 const STATE_FILE = path.join(process.cwd(), 'data', 'state.json');
 const EXPIRY_HOURS = 24;
-
-export interface PublishedTrend {
-  slug: string;
-  publishedAt: string;
-}
-
-export interface State {
-  publishedTrends: Record<string, PublishedTrend>;
-  lastUpdated: string;
-}
 
 /**
  * Varsayılan state

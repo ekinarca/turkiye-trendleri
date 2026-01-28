@@ -5,7 +5,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { GeneratedArticle } from './generate.js';
+import type { GeneratedArticle } from './types.js';
 import { formatDateForFile } from './utils/date.js';
 import { loadState, saveState, markAsPublished } from './utils/state.js';
 import { normalizeQuery } from './utils/text.js';

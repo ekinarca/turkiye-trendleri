@@ -7,19 +7,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { formatDateForFile, formatTimeForFile, nowISOTurkey } from './utils/date.js';
 import { sleep, fetchWithRetry } from './utils/http.js';
+import type { Trend, TrendSnapshot } from './types.js';
 
-export interface Trend {
-  query: string;
-  rank: number;
-  relatedQueries?: string[];
-  timestamp: string;
-}
-
-export interface TrendSnapshot {
-  fetchedAt: string;
-  region: string;
-  trends: Trend[];
-}
+export type { Trend, TrendSnapshot };
 
 // Google Trends Daily Trends RSS endpoint (Türkiye)
 const TRENDS_RSS_URL = 'https://trends.google.com/trends/trendingsearches/daily/rss?geo=TR';

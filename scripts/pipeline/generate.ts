@@ -4,22 +4,11 @@
  */
 
 import OpenAI from 'openai';
-import { ResearchBundle, Source } from './research.js';
+import type { ResearchBundle, Source, GeneratedArticle } from './types.js';
 import { nowISOTurkey } from './utils/date.js';
 import { createSlug } from './utils/text.js';
 
-export interface GeneratedArticle {
-  title: string;
-  slug: string;
-  summary: string;
-  category: string;
-  tags: string[];
-  readingTime: number;
-  content: string;
-  sources: Source[];
-  trendQuery: string;
-  generatedAt: string;
-}
+export type { GeneratedArticle };
 
 const CATEGORIES = [
   'Ekonomi',
