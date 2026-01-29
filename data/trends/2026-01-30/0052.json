@@ -1,0 +1,56 @@
+{
+  "fetchedAt": "2026-01-30T00:52:21+03:00",
+  "region": "TR",
+  "trends": [
+    {
+      "query": "celta vigo",
+      "rank": 1,
+      "timestamp": "2026-01-30T00:52:21+03:00"
+    },
+    {
+      "query": "salzburg",
+      "rank": 2,
+      "timestamp": "2026-01-30T00:52:21+03:00"
+    },
+    {
+      "query": "oğuz aydın",
+      "rank": 3,
+      "timestamp": "2026-01-30T00:52:21+03:00"
+    },
+    {
+      "query": "tahtalı barajı doluluk oranı",
+      "rank": 4,
+      "timestamp": "2026-01-30T00:52:21+03:00"
+    },
+    {
+      "query": "30 ocak bim kataloğu 2026",
+      "rank": 5,
+      "timestamp": "2026-01-30T00:52:21+03:00"
+    },
+    {
+      "query": "sk brann",
+      "rank": 6,
+      "timestamp": "2026-01-30T00:52:21+03:00"
+    },
+    {
+      "query": "el nesyri",
+      "rank": 7,
+      "timestamp": "2026-01-30T00:52:21+03:00"
+    },
+    {
+      "query": "popescu",
+      "rank": 8,
+      "timestamp": "2026-01-30T00:52:21+03:00"
+    },
+    {
+      "query": "emma stone",
+      "rank": 9,
+      "timestamp": "2026-01-30T00:52:21+03:00"
+    },
+    {
+      "query": "fenerbahçe medicana",
+      "rank": 10,
+      "timestamp": "2026-01-30T00:52:21+03:00"
+    }
+  ]
+}
