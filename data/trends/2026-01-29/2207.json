@@ -1,0 +1,56 @@
+{
+  "fetchedAt": "2026-01-29T22:07:24+03:00",
+  "region": "TR",
+  "trends": [
+    {
+      "query": "melbourne",
+      "rank": 1,
+      "timestamp": "2026-01-29T22:07:24+03:00"
+    },
+    {
+      "query": "tüpraş",
+      "rank": 2,
+      "timestamp": "2026-01-29T22:07:24+03:00"
+    },
+    {
+      "query": "viyana",
+      "rank": 3,
+      "timestamp": "2026-01-29T22:07:24+03:00"
+    },
+    {
+      "query": "avustralya",
+      "rank": 4,
+      "timestamp": "2026-01-29T22:07:24+03:00"
+    },
+    {
+      "query": "portekiz",
+      "rank": 5,
+      "timestamp": "2026-01-29T22:07:24+03:00"
+    },
+    {
+      "query": "sidney",
+      "rank": 6,
+      "timestamp": "2026-01-29T22:07:24+03:00"
+    },
+    {
+      "query": "ispanya",
+      "rank": 7,
+      "timestamp": "2026-01-29T22:07:24+03:00"
+    },
+    {
+      "query": "iran",
+      "rank": 8,
+      "timestamp": "2026-01-29T22:07:24+03:00"
+    },
+    {
+      "query": "avusturya",
+      "rank": 9,
+      "timestamp": "2026-01-29T22:07:24+03:00"
+    },
+    {
+      "query": "tahran",
+      "rank": 10,
+      "timestamp": "2026-01-29T22:07:24+03:00"
+    }
+  ]
+}

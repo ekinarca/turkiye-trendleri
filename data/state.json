@@ -1,65 +1,5 @@
 {
   "publishedTrends": {
-    "sinop toki kura sonuçları": {
-      "slug": "sinop-toki-kura-cekimi-sonuclari-aciklandi",
-      "publishedAt": "2026-01-28T10:11:46.031Z"
-    },
-    "muş spor": {
-      "slug": "musspor-heyecan-dolu-bir-macin-esiginde",
-      "publishedAt": "2026-01-28T10:11:46.031Z"
-    },
-    "muşspor": {
-      "slug": "mussporun-kirklarelispor-maci-oncesi-heyecan-dorukta",
-      "publishedAt": "2026-01-28T10:11:46.032Z"
-    },
-    "iddia": {
-      "slug": "iddialar-gundemi-sariyor-hakan-tasiyandan-trumpa-kadar-uzanan-konular",
-      "publishedAt": "2026-01-28T10:11:46.032Z"
-    },
-    "mika raun": {
-      "slug": "mika-raun-hamile-oldugunu-duyurdu-tip-dunyasinda-sok-etkisi-yaratti",
-      "publishedAt": "2026-01-28T10:11:46.033Z"
-    },
-    "survivor osman can kim": {
-      "slug": "survivor-osman-can-ural-kimdir-nereli-ve-ne-is-yapiyor",
-      "publishedAt": "2026-01-28T19:02:15.229Z"
-    },
-    "emir kaan gültekin": {
-      "slug": "bursasporun-yeni-transferi-emir-kaan-gultekin",
-      "publishedAt": "2026-01-28T19:02:15.230Z"
-    },
-    "emekli maaşı": {
-      "slug": "2026-emekli-maasi-zam-farklari-ve-odeme-tarihleri-belli-oldu",
-      "publishedAt": "2026-01-28T19:02:15.230Z"
-    },
-    "demet özdemir": {
-      "slug": "demet-ozdemirden-dubaiye-yatirim-hamlesi",
-      "publishedAt": "2026-01-28T19:02:15.230Z"
-    },
-    "kanal d canlı": {
-      "slug": "kanal-d-canli-yayin-akisi-28-ocak-2026-gunu-neler-var",
-      "publishedAt": "2026-01-28T19:02:15.230Z"
-    },
-    "survivor nefise": {
-      "slug": "survivor-nefise-karatayin-donusu-ve-estetik-degisimi-gundem-oldu",
-      "publishedAt": "2026-01-28T19:02:15.231Z"
-    },
-    "kanal d": {
-      "slug": "kanal-dnin-esref-ruyasinda-sezen-aksu-surprizi",
-      "publishedAt": "2026-01-28T19:02:15.231Z"
-    },
-    "songül öden": {
-      "slug": "songul-odenin-kizi-larin-2-yasinda-duygusal-paylasimlar-goz-doldurdu",
-      "publishedAt": "2026-01-28T19:02:15.231Z"
-    },
-    "nagihan karadere": {
-      "slug": "survivor-2026-nagihan-karaderenin-gundemdeki-yeri",
-      "publishedAt": "2026-01-28T19:02:15.232Z"
-    },
-    "kanald": {
-      "slug": "kanal-dde-esref-ruya-heyecani-yeni-bolum-ve-surprizler",
-      "publishedAt": "2026-01-28T19:02:15.232Z"
-    },
     "barcelona": {
       "slug": "barcelona-kopenhag-maci-oncesi-heyecan-dorukta",
       "publishedAt": "2026-01-28T21:56:57.161Z"
@@ -123,7 +63,47 @@
     "28 ocak reyting sonuçları 2026": {
       "slug": "28-ocak-2026-reyting-sonuclari-esref-ruya-zirvede",
       "publishedAt": "2026-01-29T10:07:12.480Z"
+    },
+    "melbourne": {
+      "slug": "avustralya-acik-2026-finalistler-belli-oldu",
+      "publishedAt": "2026-01-29T19:10:51.539Z"
+    },
+    "tüpraş": {
+      "slug": "tupras-izmit-rafinerisinde-patlama-yangin-panigi-ve-tahliye",
+      "publishedAt": "2026-01-29T19:10:51.539Z"
+    },
+    "viyana": {
+      "slug": "viyanada-osmanli-diplomasi-ve-muzik-ruzgari",
+      "publishedAt": "2026-01-29T19:10:51.539Z"
+    },
+    "avustralya": {
+      "slug": "avustralyada-orman-yanginlari-ve-darwin-limani-tartismalari-gundemde",
+      "publishedAt": "2026-01-29T19:10:51.539Z"
+    },
+    "portekiz": {
+      "slug": "turkiye-ve-portekiz-arasindaki-denizcilik-is-birligi-gelisiyor",
+      "publishedAt": "2026-01-29T19:10:51.540Z"
+    },
+    "sidney": {
+      "slug": "sydney-sweeneynin-ic-giyim-markasi-ve-sinema-basarisi",
+      "publishedAt": "2026-01-29T19:10:51.540Z"
+    },
+    "ispanya": {
+      "slug": "ispanyada-kristin-firtinasi-sel-felaketine-yol-acti",
+      "publishedAt": "2026-01-29T19:10:51.540Z"
+    },
+    "iran": {
+      "slug": "iranda-gerginlik-artiyor-ab-teror-listesine-aldi-savas-hazirliklari-basladi",
+      "publishedAt": "2026-01-29T19:10:51.540Z"
+    },
+    "avusturya": {
+      "slug": "avusturyada-cocuklara-yonelik-dijital-yasak-gundemde",
+      "publishedAt": "2026-01-29T19:10:51.541Z"
+    },
+    "tahran": {
+      "slug": "tahranda-savas-hazirliklari-siginaklar-ve-siren-sistemleri-kuruluyor",
+      "publishedAt": "2026-01-29T19:10:51.541Z"
     }
   },
-  "lastUpdated": "2026-01-29T10:07:12.480Z"
+  "lastUpdated": "2026-01-29T19:10:51.541Z"
 }
