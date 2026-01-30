@@ -1,45 +1,5 @@
 {
   "publishedTrends": {
-    "melbourne": {
-      "slug": "avustralya-acik-2026-finalistler-belli-oldu",
-      "publishedAt": "2026-01-29T19:10:51.539Z"
-    },
-    "tüpraş": {
-      "slug": "tupras-izmit-rafinerisinde-patlama-yangin-panigi-ve-tahliye",
-      "publishedAt": "2026-01-29T19:10:51.539Z"
-    },
-    "viyana": {
-      "slug": "viyanada-osmanli-diplomasi-ve-muzik-ruzgari",
-      "publishedAt": "2026-01-29T19:10:51.539Z"
-    },
-    "avustralya": {
-      "slug": "avustralyada-orman-yanginlari-ve-darwin-limani-tartismalari-gundemde",
-      "publishedAt": "2026-01-29T19:10:51.539Z"
-    },
-    "portekiz": {
-      "slug": "turkiye-ve-portekiz-arasindaki-denizcilik-is-birligi-gelisiyor",
-      "publishedAt": "2026-01-29T19:10:51.540Z"
-    },
-    "sidney": {
-      "slug": "sydney-sweeneynin-ic-giyim-markasi-ve-sinema-basarisi",
-      "publishedAt": "2026-01-29T19:10:51.540Z"
-    },
-    "ispanya": {
-      "slug": "ispanyada-kristin-firtinasi-sel-felaketine-yol-acti",
-      "publishedAt": "2026-01-29T19:10:51.540Z"
-    },
-    "iran": {
-      "slug": "iranda-gerginlik-artiyor-ab-teror-listesine-aldi-savas-hazirliklari-basladi",
-      "publishedAt": "2026-01-29T19:10:51.540Z"
-    },
-    "avusturya": {
-      "slug": "avusturyada-cocuklara-yonelik-dijital-yasak-gundemde",
-      "publishedAt": "2026-01-29T19:10:51.541Z"
-    },
-    "tahran": {
-      "slug": "tahranda-savas-hazirliklari-siginaklar-ve-siren-sistemleri-kuruluyor",
-      "publishedAt": "2026-01-29T19:10:51.541Z"
-    },
     "celta vigo": {
       "slug": "celta-vigo-ve-kizilyildiz-maci-uefa-avrupa-ligi-heyecani",
       "publishedAt": "2026-01-29T21:55:12.527Z"
@@ -135,7 +95,47 @@
     "show canlı yayın": {
       "slug": "show-tv-canli-yayinlari-ile-dikkatleri-uzerine-topluyor",
       "publishedAt": "2026-01-30T19:08:32.930Z"
+    },
+    "bddk": {
+      "slug": "bddkdan-konut-kredilerinde-onemli-degisiklik-birinci-ve-ikinci-el-ayrimi-kaldiri",
+      "publishedAt": "2026-01-30T21:52:28.887Z"
+    },
+    "hasan suver": {
+      "slug": "hasan-suvere-cifte-gorev-basdanisman-ve-bakan-yardimcisi-atandi",
+      "publishedAt": "2026-01-30T21:52:28.887Z"
+    },
+    "arka sokaklar 737": {
+      "slug": "arka-sokaklar-737-bolum-gozler-ekranda",
+      "publishedAt": "2026-01-30T21:52:28.888Z"
+    },
+    "kızılcık şerbeti 123 bölüm izle": {
+      "slug": "kizilcik-serbeti-123-bolum-izleme-rehberi",
+      "publishedAt": "2026-01-30T21:52:28.888Z"
+    },
+    "pınar altuğ": {
+      "slug": "pinar-altugun-kizi-17-yasinda-duygu-dolu-kutlama",
+      "publishedAt": "2026-01-30T21:52:28.888Z"
+    },
+    "tolu arokodare": {
+      "slug": "besiktas-tolu-arokodare-ile-forvet-hattini-guclendirmek-istiyor",
+      "publishedAt": "2026-01-30T21:52:28.888Z"
+    },
+    "espanyol": {
+      "slug": "espanyol-ve-deportivo-alaves-macinda-son-durum",
+      "publishedAt": "2026-01-30T21:52:28.889Z"
+    },
+    "19 bölüm veliaht izle": {
+      "slug": "veliaht-19-bolum-izlenimleri-esenlerde-dengeler-degisiyor",
+      "publishedAt": "2026-01-30T21:52:28.889Z"
+    },
+    "yağmur atacan": {
+      "slug": "yagmur-atacanin-17-dogum-gunu-kutlamasi-duygusal-anlara-sahne-oldu",
+      "publishedAt": "2026-01-30T21:52:28.889Z"
+    },
+    "abd iran": {
+      "slug": "abd-ve-iran-arasindaki-gerilim-askeri-varlik-ve-diplomasi-arasindaki-denge",
+      "publishedAt": "2026-01-30T21:52:28.890Z"
     }
   },
-  "lastUpdated": "2026-01-30T19:08:32.930Z"
+  "lastUpdated": "2026-01-30T21:52:28.890Z"
 }
