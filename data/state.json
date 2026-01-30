@@ -1,37 +1,5 @@
 {
   "publishedTrends": {
-    "barcelona": {
-      "slug": "barcelona-kopenhag-maci-oncesi-heyecan-dorukta",
-      "publishedAt": "2026-01-28T21:56:57.161Z"
-    },
-    "sanchez": {
-      "slug": "galatasaray-manchester-city-karsisinda-zorlu-bir-mucadele-verecek",
-      "publishedAt": "2026-01-28T21:56:57.161Z"
-    },
-    "davinson": {
-      "slug": "manchester-city-ve-galatasarayin-ilk-11leri-belli-oldu",
-      "publishedAt": "2026-01-28T21:56:57.161Z"
-    },
-    "sporting": {
-      "slug": "athletic-bilbao-ve-sporting-cp-macina-dair-tum-detaylar",
-      "publishedAt": "2026-01-28T21:56:57.161Z"
-    },
-    "madrid": {
-      "slug": "benfica-real-madrid-macinda-surpriz-sonuc-3-2",
-      "publishedAt": "2026-01-28T21:56:57.162Z"
-    },
-    "nico gonzález": {
-      "slug": "nico-gonzalez-genc-yildizin-yukselisi-ve-performansi",
-      "publishedAt": "2026-01-28T21:56:57.162Z"
-    },
-    "marmoush": {
-      "slug": "omar-marmoushun-transfer-sureci-gundemde",
-      "publishedAt": "2026-01-28T21:56:57.162Z"
-    },
-    "bilbao": {
-      "slug": "athletic-bilbaonun-sampiyonlar-ligi-mucadelesi-ve-hisse-senedi-notu-dususu",
-      "publishedAt": "2026-01-28T21:56:57.162Z"
-    },
     "fatima florez": {
       "slug": "arjantin-devlet-baskani-milei-eski-sevgilisi-florez-ile-sahneye-cikti",
       "publishedAt": "2026-01-29T10:07:12.478Z"
@@ -135,7 +103,43 @@
     "fenerbahçe medicana": {
       "slug": "fenerbahce-medicananin-sampiyonlar-ligindeki-yukselisi",
       "publishedAt": "2026-01-29T21:55:12.528Z"
+    },
+    "galatasaray kura çekimi": {
+      "slug": "galatasarayin-sampiyonlar-ligi-play-off-kura-cekimi-heyecani",
+      "publishedAt": "2026-01-30T10:05:07.882Z"
+    },
+    "berat kandili 2026": {
+      "slug": "berat-kandili-2026-tarih-ve-onemi",
+      "publishedAt": "2026-01-30T10:05:07.882Z"
+    },
+    "ogle namazi": {
+      "slug": "ogle-namazi-vakitleri-30-ocak-2026-icin-detaylar",
+      "publishedAt": "2026-01-30T10:05:07.882Z"
+    },
+    "cuma hutbesi 30 ocak 2026": {
+      "slug": "30-ocak-2026-cuma-hutbesi-tovbeye-yonelmek",
+      "publishedAt": "2026-01-30T10:05:07.883Z"
+    },
+    "sinner": {
+      "slug": "sinner-ve-djokovic-avustralya-acik-yari-finalinde-karsi-karsiya-geliyor",
+      "publishedAt": "2026-01-30T10:05:07.883Z"
+    },
+    "wilma elles": {
+      "slug": "wilma-ellesin-nafaka-davasinda-mahkemeden-sasirtan-karar",
+      "publishedAt": "2026-01-30T10:05:07.883Z"
+    },
+    "ordu toki kura sonuçları": {
+      "slug": "ordu-toki-kura-sonuclari-aciklandi-hak-sahipleri-belli-oldu",
+      "publishedAt": "2026-01-30T10:05:07.883Z"
+    },
+    "mirjana pajkoviç": {
+      "slug": "karadagda-mirjana-pajkovic-istifasi-ve-skandalin-perde-arkasi",
+      "publishedAt": "2026-01-30T10:05:07.884Z"
+    },
+    "pep guardiola": {
+      "slug": "pep-guardioladan-filistin-icin-duygusal-mesaj",
+      "publishedAt": "2026-01-30T10:05:07.884Z"
     }
   },
-  "lastUpdated": "2026-01-29T21:55:12.528Z"
+  "lastUpdated": "2026-01-30T10:05:07.884Z"
 }
