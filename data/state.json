@@ -1,37 +1,5 @@
 {
   "publishedTrends": {
-    "celta vigo": {
-      "slug": "celta-vigo-ve-kizilyildiz-maci-uefa-avrupa-ligi-heyecani",
-      "publishedAt": "2026-01-29T21:55:12.527Z"
-    },
-    "salzburg": {
-      "slug": "aston-villa-ve-salzburg-karsi-karsiya-mac-detaylari",
-      "publishedAt": "2026-01-29T21:55:12.527Z"
-    },
-    "oğuz aydın": {
-      "slug": "fenerbahcenin-fcsb-deplasmanindaki-kritik-maci",
-      "publishedAt": "2026-01-29T21:55:12.527Z"
-    },
-    "tahtalı barajı doluluk oranı": {
-      "slug": "izmir-tahtali-barajinda-su-seviyesi-artiyor",
-      "publishedAt": "2026-01-29T21:55:12.527Z"
-    },
-    "30 ocak bim kataloğu 2026": {
-      "slug": "30-ocak-2026-bim-katalogu-yayinlandi-indirimli-urunler-neler",
-      "publishedAt": "2026-01-29T21:55:12.528Z"
-    },
-    "el nesyri": {
-      "slug": "en-nesyrinin-fenerbahce-macerasinda-yeni-gelismeler",
-      "publishedAt": "2026-01-29T21:55:12.528Z"
-    },
-    "popescu": {
-      "slug": "fcsbnin-parlayan-yildizi-octavian-popescu",
-      "publishedAt": "2026-01-29T21:55:12.528Z"
-    },
-    "fenerbahçe medicana": {
-      "slug": "fenerbahce-medicananin-sampiyonlar-ligindeki-yukselisi",
-      "publishedAt": "2026-01-29T21:55:12.528Z"
-    },
     "galatasaray kura çekimi": {
       "slug": "galatasarayin-sampiyonlar-ligi-play-off-kura-cekimi-heyecani",
       "publishedAt": "2026-01-30T10:05:07.882Z"
@@ -135,7 +103,43 @@
     "abd iran": {
       "slug": "abd-ve-iran-arasindaki-gerilim-askeri-varlik-ve-diplomasi-arasindaki-denge",
       "publishedAt": "2026-01-30T21:52:28.890Z"
+    },
+    "izmir hava durumu": {
+      "slug": "izmirde-hava-durumu-saganak-yagis-ve-sari-uyari",
+      "publishedAt": "2026-01-31T09:52:46.508Z"
+    },
+    "manisa hava durumu": {
+      "slug": "manisada-yagis-alarmi-hava-durumu-uyarisi-yayinlandi",
+      "publishedAt": "2026-01-31T09:52:46.508Z"
+    },
+    "simge sağın": {
+      "slug": "simge-sagindan-unutulmaz-bir-gece-bostanci-buyulendi",
+      "publishedAt": "2026-01-31T09:52:46.508Z"
+    },
+    "baraj doluluk oranı izmir": {
+      "slug": "izmir-barajlarinda-doluluk-orani-artiyor-son-durum-nedir",
+      "publishedAt": "2026-01-31T09:52:46.508Z"
+    },
+    "telesiyej": {
+      "slug": "uludagda-telesiyej-arizasi-tatilciler-havada-mahsur-kaldi",
+      "publishedAt": "2026-01-31T09:52:46.508Z"
+    },
+    "bursa elektrik kesintisi": {
+      "slug": "bursada-elektrik-kesintileri-basliyor-31-ocak-ve-2-subat-tarihleri-onemli",
+      "publishedAt": "2026-01-31T09:52:46.509Z"
+    },
+    "kenevir": {
+      "slug": "21-ilde-kenevir-uretimine-resmi-onay-cikti",
+      "publishedAt": "2026-01-31T09:52:46.509Z"
+    },
+    "polatlı su kesintisi": {
+      "slug": "polatlida-su-kesintisi-vatandaslar-tepkili",
+      "publishedAt": "2026-01-31T09:52:46.509Z"
+    },
+    "prens andrew": {
+      "slug": "prens-andrew-ve-yeni-epstein-belgeleri-sok-edici-iddialar-ve-goruntuler",
+      "publishedAt": "2026-01-31T09:52:46.509Z"
     }
   },
-  "lastUpdated": "2026-01-30T21:52:28.890Z"
+  "lastUpdated": "2026-01-31T09:52:46.509Z"
 }

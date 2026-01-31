@@ -1,0 +1,56 @@
+{
+  "fetchedAt": "2026-01-31T12:49:51+03:00",
+  "region": "TR",
+  "trends": [
+    {
+      "query": "izmir hava durumu",
+      "rank": 1,
+      "timestamp": "2026-01-31T12:49:50+03:00"
+    },
+    {
+      "query": "manisa hava durumu",
+      "rank": 2,
+      "timestamp": "2026-01-31T12:49:50+03:00"
+    },
+    {
+      "query": "simge sağın",
+      "rank": 3,
+      "timestamp": "2026-01-31T12:49:50+03:00"
+    },
+    {
+      "query": "baraj doluluk oranı izmir",
+      "rank": 4,
+      "timestamp": "2026-01-31T12:49:50+03:00"
+    },
+    {
+      "query": "telesiyej",
+      "rank": 5,
+      "timestamp": "2026-01-31T12:49:50+03:00"
+    },
+    {
+      "query": "bursa elektrik kesintisi",
+      "rank": 6,
+      "timestamp": "2026-01-31T12:49:50+03:00"
+    },
+    {
+      "query": "kenevir",
+      "rank": 7,
+      "timestamp": "2026-01-31T12:49:50+03:00"
+    },
+    {
+      "query": "polatlı su kesintisi",
+      "rank": 8,
+      "timestamp": "2026-01-31T12:49:50+03:00"
+    },
+    {
+      "query": "prens andrew",
+      "rank": 9,
+      "timestamp": "2026-01-31T12:49:50+03:00"
+    },
+    {
+      "query": "arina sabalenka",
+      "rank": 10,
+      "timestamp": "2026-01-31T12:49:51+03:00"
+    }
+  ]
+}
