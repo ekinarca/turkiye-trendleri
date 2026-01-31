@@ -1,33 +1,5 @@
 {
   "publishedTrends": {
-    "hannover 96": {
-      "slug": "hannover-96nin-performansi-ve-bugunku-mac-beklentileri",
-      "publishedAt": "2026-01-30T19:08:32.928Z"
-    },
-    "onuachu": {
-      "slug": "antalyaspor-ve-trabzonspor-puanlari-paylasti-onuachu-bir-gol-atti-bir-penalti-ka",
-      "publishedAt": "2026-01-30T19:08:32.929Z"
-    },
-    "yasemin sakallıoğlu": {
-      "slug": "yasemin-sakallioglu-izmirde-seyircileri-guldurdu",
-      "publishedAt": "2026-01-30T19:08:32.929Z"
-    },
-    "gelinim mutfakta puan durumu": {
-      "slug": "gelinim-mutfaktada-eleme-gunu-kim-elendi-kim-birinci-oldu",
-      "publishedAt": "2026-01-30T19:08:32.929Z"
-    },
-    "gümüş": {
-      "slug": "gumus-fiyatlarinda-dalgalanma-nedenleri-ve-son-durum",
-      "publishedAt": "2026-01-30T19:08:32.930Z"
-    },
-    "gümüş gram": {
-      "slug": "gumus-fiyatlarinda-sert-dusus-piyasalarda-neler-oluyor",
-      "publishedAt": "2026-01-30T19:08:32.930Z"
-    },
-    "show canlı yayın": {
-      "slug": "show-tv-canli-yayinlari-ile-dikkatleri-uzerine-topluyor",
-      "publishedAt": "2026-01-30T19:08:32.930Z"
-    },
     "bddk": {
       "slug": "bddkdan-konut-kredilerinde-onemli-degisiklik-birinci-ve-ikinci-el-ayrimi-kaldiri",
       "publishedAt": "2026-01-30T21:52:28.887Z"
@@ -139,7 +111,31 @@
     "gabriel brazao": {
       "slug": "besiktasin-yeni-kaleci-adayi-gabriel-brazao",
       "publishedAt": "2026-01-31T18:56:05.606Z"
+    },
+    "sani sener": {
+      "slug": "tav-insaat-patronu-sani-sener-fransada-gozaltina-alindi",
+      "publishedAt": "2026-01-31T21:49:15.174Z"
+    },
+    "cherıf": {
+      "slug": "fenerbahcenin-yeni-golcusu-sidiki-cherif-istanbulda",
+      "publishedAt": "2026-01-31T21:49:15.174Z"
+    },
+    "adama traore": {
+      "slug": "adama-traore-transfer-doneminin-gozde-isimlerinden-biri",
+      "publishedAt": "2026-01-31T21:49:15.174Z"
+    },
+    "acun ilıcalı": {
+      "slug": "acun-ilicalinin-hull-city-yukselisi-transferler-ve-basarilar",
+      "publishedAt": "2026-01-31T21:49:15.175Z"
+    },
+    "st etienne": {
+      "slug": "st-etienne-ve-boulogne-maci-heyecani",
+      "publishedAt": "2026-01-31T21:49:15.175Z"
+    },
+    "güller ve günahlar 15 bölüm": {
+      "slug": "guller-ve-gunahlar-15-bolum-kaderin-haberi-her-seyi-degistiriyor",
+      "publishedAt": "2026-01-31T21:49:15.175Z"
     }
   },
-  "lastUpdated": "2026-01-31T18:56:05.607Z"
+  "lastUpdated": "2026-01-31T21:49:15.175Z"
 }
