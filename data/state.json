@@ -1,65 +1,5 @@
 {
   "publishedTrends": {
-    "nijerya": {
-      "slug": "nijerya-cinsi-cuce-keciler-evcil-hayvan-alternatifi-olarak-gundeme-geliyor",
-      "publishedAt": "2026-02-01T19:00:49.596Z"
-    },
-    "gabriel sara": {
-      "slug": "galatasarayda-gabriel-saranin-yukselisi-ve-leroy-sane-planlari",
-      "publishedAt": "2026-02-01T19:00:49.597Z"
-    },
-    "sara": {
-      "slug": "gabriel-sara-ile-suriyedeki-gelismeler-uzerine-kritik-gorusmeler",
-      "publishedAt": "2026-02-01T19:00:49.597Z"
-    },
-    "bangladesh": {
-      "slug": "bangladeste-ekonomik-darbogaz-ve-secim-umutlari",
-      "publishedAt": "2026-02-01T19:00:49.597Z"
-    },
-    "bangladeş": {
-      "slug": "bangladesin-ekonomik-umutlari-secimlere-bagli",
-      "publishedAt": "2026-02-01T19:00:49.597Z"
-    },
-    "brezilya": {
-      "slug": "brezilyadan-gelen-etkiler-kahve-fiyatlari-dususte-transfer-gundemde",
-      "publishedAt": "2026-02-01T19:00:49.598Z"
-    },
-    "rusya": {
-      "slug": "rusyanin-uluslararasi-gundemdeki-yeri",
-      "publishedAt": "2026-02-01T19:00:49.598Z"
-    },
-    "2015 yılında her bakan kişinin farklı bir renk gördüğü söylenen viral olmuş kıyafet hangisidir": {
-      "slug": "2015teki-viral-kiyafet-beyaz-mi-mavi-mi",
-      "publishedAt": "2026-02-01T19:00:49.598Z"
-    },
-    "rüya gibi": {
-      "slug": "ruya-gibi-dizisi-izleyicileri-buyuluyor",
-      "publishedAt": "2026-02-01T21:50:18.026Z"
-    },
-    "kante": {
-      "slug": "ngolo-kantenin-fenerbahceye-transfer-sureci-hiz-kazandi",
-      "publishedAt": "2026-02-01T21:50:18.027Z"
-    },
-    "survivor oylama": {
-      "slug": "survivor-2026-eleme-adaylari-gerilim-tirmaniyor",
-      "publishedAt": "2026-02-01T21:50:18.027Z"
-    },
-    "tekirdağ valiliği": {
-      "slug": "tekirdagda-okul-tatili-beklentisi-2-subat-aciklamalari",
-      "publishedAt": "2026-02-01T21:50:18.027Z"
-    },
-    "diaby": {
-      "slug": "diabynin-yukselisi-futbol-dunyasinda-yeni-bir-yildiz-mi-doguyor",
-      "publishedAt": "2026-02-01T21:50:18.027Z"
-    },
-    "bilbao": {
-      "slug": "efe-korkut-athletic-bilbaonin-ilk-turk-futbolcusu-olmayi-basardi",
-      "publishedAt": "2026-02-01T21:50:18.028Z"
-    },
-    "denis zakaria": {
-      "slug": "denis-zakaria-futbol-dunyasinda-yukselen-bir-yildiz",
-      "publishedAt": "2026-02-01T21:50:18.028Z"
-    },
     "department of justice epstein files": {
       "slug": "epstein-belgeleri-abd-kongresi-ve-suclamalar-uzerine-tartismalar-suruyor",
       "publishedAt": "2026-02-02T10:16:19.190Z"
@@ -95,7 +35,47 @@
     "ocak ayı enflasyon": {
       "slug": "ocak-ayi-enflasyonu-beklentiler-ve-piyasa-etkileri",
       "publishedAt": "2026-02-02T10:16:19.192Z"
+    },
+    "ramazan pidesi": {
+      "slug": "ramazan-pidesi-fiyatlari-2026-iftar-sofralarinin-vazgecilmezi",
+      "publishedAt": "2026-02-03T10:08:19.112Z"
+    },
+    "iğdır fk  antalyaspor": {
+      "slug": "igdir-fk-antalyaspor-maci-turkiye-kupasinda-kritik-mucadele",
+      "publishedAt": "2026-02-03T10:08:19.112Z"
+    },
+    "ziraat türkiye kupası maçları": {
+      "slug": "ziraat-turkiye-kupasi-heyecani-devam-ediyor-mac-programi-ve-detaylar",
+      "publishedAt": "2026-02-03T10:08:19.112Z"
+    },
+    "pusula gazetesi": {
+      "slug": "zonguldak-pusula-gazetesi-gundeminde-one-cikan-konular",
+      "publishedAt": "2026-02-03T10:08:19.112Z"
+    },
+    "tayfun korkut": {
+      "slug": "efe-korkut-athletic-bilbao-tarihine-gecti-ilk-turk-oyuncu",
+      "publishedAt": "2026-02-03T10:08:19.113Z"
+    },
+    "sevtap parman": {
+      "slug": "yesilcamin-guzeli-sevtap-parmanin-saglik-durumu-gundemde",
+      "publishedAt": "2026-02-03T10:08:19.113Z"
+    },
+    "devlet bahçeli": {
+      "slug": "devlet-bahcelinin-tartismali-aciklamalari-ocalan-umuda-demirtas-yuvasina-donene-",
+      "publishedAt": "2026-02-03T10:08:19.113Z"
+    },
+    "fanatik gazetesi": {
+      "slug": "super-ligde-transfer-gundemi-ahmet-taha-ve-diger-gelismeler",
+      "publishedAt": "2026-02-03T10:08:19.113Z"
+    },
+    "evan ferguson": {
+      "slug": "evan-ferguson-galatasarayin-yeni-hedefi-mi",
+      "publishedAt": "2026-02-03T10:08:19.113Z"
+    },
+    "kayseri toki çekilişi": {
+      "slug": "kayseri-toki-cekilisi-sonuclandi-hak-sahipleri-belli-oldu",
+      "publishedAt": "2026-02-03T10:08:19.114Z"
     }
   },
-  "lastUpdated": "2026-02-02T10:16:19.192Z"
+  "lastUpdated": "2026-02-03T10:08:19.114Z"
 }

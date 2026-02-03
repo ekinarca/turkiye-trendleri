@@ -1,0 +1,56 @@
+{
+  "fetchedAt": "2026-02-03T13:05:00+03:00",
+  "region": "TR",
+  "trends": [
+    {
+      "query": "ramazan pidesi",
+      "rank": 1,
+      "timestamp": "2026-02-03T13:05:00+03:00"
+    },
+    {
+      "query": "iğdır fk - antalyaspor",
+      "rank": 2,
+      "timestamp": "2026-02-03T13:05:00+03:00"
+    },
+    {
+      "query": "ziraat türkiye kupası maçları",
+      "rank": 3,
+      "timestamp": "2026-02-03T13:05:00+03:00"
+    },
+    {
+      "query": "pusula gazetesi",
+      "rank": 4,
+      "timestamp": "2026-02-03T13:05:00+03:00"
+    },
+    {
+      "query": "tayfun korkut",
+      "rank": 5,
+      "timestamp": "2026-02-03T13:05:00+03:00"
+    },
+    {
+      "query": "sevtap parman",
+      "rank": 6,
+      "timestamp": "2026-02-03T13:05:00+03:00"
+    },
+    {
+      "query": "devlet bahçeli",
+      "rank": 7,
+      "timestamp": "2026-02-03T13:05:00+03:00"
+    },
+    {
+      "query": "fanatik gazetesi",
+      "rank": 8,
+      "timestamp": "2026-02-03T13:05:00+03:00"
+    },
+    {
+      "query": "evan ferguson",
+      "rank": 9,
+      "timestamp": "2026-02-03T13:05:00+03:00"
+    },
+    {
+      "query": "kayseri toki çekilişi",
+      "rank": 10,
+      "timestamp": "2026-02-03T13:05:00+03:00"
+    }
+  ]
+}
