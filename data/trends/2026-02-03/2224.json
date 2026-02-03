@@ -1,0 +1,56 @@
+{
+  "fetchedAt": "2026-02-03T22:24:24+03:00",
+  "region": "TR",
+  "trends": [
+    {
+      "query": "ألباسيتي ضد برشلونة",
+      "rank": 1,
+      "timestamp": "2026-02-03T22:24:24+03:00"
+    },
+    {
+      "query": "barcelona - fenerbahçe",
+      "rank": 2,
+      "timestamp": "2026-02-03T22:24:24+03:00"
+    },
+    {
+      "query": "ragusa",
+      "rank": 3,
+      "timestamp": "2026-02-03T22:24:24+03:00"
+    },
+    {
+      "query": "az - twente",
+      "rank": 4,
+      "timestamp": "2026-02-03T22:24:24+03:00"
+    },
+    {
+      "query": "albacete vs barcelona",
+      "rank": 5,
+      "timestamp": "2026-02-03T22:24:24+03:00"
+    },
+    {
+      "query": "ispanya kral kupası",
+      "rank": 6,
+      "timestamp": "2026-02-03T22:24:24+03:00"
+    },
+    {
+      "query": "hull city - watford",
+      "rank": 7,
+      "timestamp": "2026-02-03T22:24:24+03:00"
+    },
+    {
+      "query": "panathinaikos - real madrid",
+      "rank": 8,
+      "timestamp": "2026-02-03T22:24:24+03:00"
+    },
+    {
+      "query": "leverkusen - st. pauli",
+      "rank": 9,
+      "timestamp": "2026-02-03T22:24:24+03:00"
+    },
+    {
+      "query": "bologna - milan",
+      "rank": 10,
+      "timestamp": "2026-02-03T22:24:24+03:00"
+    }
+  ]
+}
