@@ -1,41 +1,5 @@
 {
   "publishedTrends": {
-    "barcelona  fenerbahçe": {
-      "slug": "barcelona-fenerbahce-beko-maci-oncesi-tum-detaylar",
-      "publishedAt": "2026-02-03T19:27:24.853Z"
-    },
-    "ragusa": {
-      "slug": "ragusa-tarihte-bugun-ne-oldu",
-      "publishedAt": "2026-02-03T19:27:24.853Z"
-    },
-    "az  twente": {
-      "slug": "az-alkmaar-twente-maci-heyecani",
-      "publishedAt": "2026-02-03T19:27:24.853Z"
-    },
-    "albacete vs barcelona": {
-      "slug": "albacete-barcelona-kral-kupasi-ceyrek-finalinde-heyecan-basliyor",
-      "publishedAt": "2026-02-03T19:27:24.853Z"
-    },
-    "ispanya kral kupası": {
-      "slug": "ispanya-kral-kupasi-ceyrek-finalinde-albacete-barcelona-karsilasmasi-heyecani",
-      "publishedAt": "2026-02-03T19:27:24.854Z"
-    },
-    "hull city  watford": {
-      "slug": "hull-city-watford-macinda-neler-yasandi",
-      "publishedAt": "2026-02-03T19:27:24.854Z"
-    },
-    "panathinaikos  real madrid": {
-      "slug": "panathinaikos-real-madrid-maci-oncesi-gelismeler",
-      "publishedAt": "2026-02-03T19:27:24.854Z"
-    },
-    "leverkusen  st pauli": {
-      "slug": "bayer-leverkusen-st-pauli-maci-hakkinda-bilgiler",
-      "publishedAt": "2026-02-03T19:27:24.855Z"
-    },
-    "bologna  milan": {
-      "slug": "bologna-milan-maci-icin-geri-sayim-basladi",
-      "publishedAt": "2026-02-03T19:27:24.855Z"
-    },
     "marsilya": {
       "slug": "besiktas-marsilyadan-amir-murilloyu-transfer-etmek-icin-gorusmelere-basladi",
       "publishedAt": "2026-02-03T22:02:04.321Z"
@@ -115,7 +79,47 @@
     "icardi": {
       "slug": "mauro-icardi-galatasaray-tarihine-gecti-haginin-rekoru-kirildi",
       "publishedAt": "2026-02-04T19:15:59.984Z"
+    },
+    "hülya koçyiğit": {
+      "slug": "hulya-kocyigit-turk-sinemasinin-ikonik-isimlerinden-biri",
+      "publishedAt": "2026-02-04T21:58:00.691Z"
+    },
+    "renato samna nhaga": {
+      "slug": "renato-sam-na-nhaga-resmen-galatasarayda",
+      "publishedAt": "2026-02-04T21:58:00.692Z"
+    },
+    "bursa elektrik kesintisi": {
+      "slug": "bursada-elektrik-kesintileri-ilgili-ilcelerde-planlanan-kesintiler-aciklandi",
+      "publishedAt": "2026-02-04T21:58:00.692Z"
+    },
+    "neymar": {
+      "slug": "neymar-sakatliklar-ve-donus-beklentileri",
+      "publishedAt": "2026-02-04T21:58:00.692Z"
+    },
+    "rangers": {
+      "slug": "rangers-ve-avrupa-ligi-ceyrek-final-eslesmeleri",
+      "publishedAt": "2026-02-04T21:58:00.692Z"
+    },
+    "fransa kupası": {
+      "slug": "fransa-kupasi-heyecani-lyon-ve-laval-karsi-karsiya-geliyor",
+      "publishedAt": "2026-02-04T21:58:00.693Z"
+    },
+    "nice fc": {
+      "slug": "nice-fcnin-galatasaray-ile-olan-transfer-engeli",
+      "publishedAt": "2026-02-04T21:58:00.693Z"
+    },
+    "sahipsizler son bölüm": {
+      "slug": "sahipsizler-dizisi-47-bolumde-neler-oldu-yeni-bolum-fragmani-yayinlandi",
+      "publishedAt": "2026-02-04T21:58:00.693Z"
+    },
+    "lorient": {
+      "slug": "lorient-ve-paris-fc-karsi-karsiya-fransa-kupasi-mucadelesi-heyecani",
+      "publishedAt": "2026-02-04T21:58:00.693Z"
+    },
+    "a101": {
+      "slug": "a101in-yeni-aktuel-katalogu-ve-medya101-lansmani",
+      "publishedAt": "2026-02-04T21:58:00.694Z"
     }
   },
-  "lastUpdated": "2026-02-04T19:15:59.984Z"
+  "lastUpdated": "2026-02-04T21:58:00.694Z"
 }
