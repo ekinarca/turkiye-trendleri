@@ -1,17 +1,5 @@
 {
   "publishedTrends": {
-    "ocak ayı kira artiş orani": {
-      "slug": "ocak-ayinda-kiralarda-beklenen-artis-orani",
-      "publishedAt": "2026-02-04T10:13:51.712Z"
-    },
-    "düzce toki kura sonuçları": {
-      "slug": "duzce-toki-kura-sonuclari-aciklandi-hangi-illere-konut-verilecek",
-      "publishedAt": "2026-02-04T10:13:51.712Z"
-    },
-    "eva dubin": {
-      "slug": "aziz-ihsan-aktas-suc-orgutu-davasi-altinci-durusma-gerceklesti",
-      "publishedAt": "2026-02-04T10:13:51.713Z"
-    },
     "ht spor": {
       "slug": "galatasaray-ve-fenerbahcede-transfer-hareketliligi-icardi-ve-kantenin-istanbul-y",
       "publishedAt": "2026-02-04T19:15:59.982Z"
@@ -127,7 +115,47 @@
     "murillo amir": {
       "slug": "amir-murillo-besiktasa-imza-atmaya-geliyor",
       "publishedAt": "2026-02-05T10:10:52.803Z"
+    },
+    "suudi arabistan pro lig": {
+      "slug": "suudi-arabistan-pro-ligi-yildizlar-gecidi-ve-tartismalar",
+      "publishedAt": "2026-02-05T19:13:38.341Z"
+    },
+    "transfer ne zaman bitiyor": {
+      "slug": "2026-super-lig-ara-transfer-donemi-ne-zaman-bitiyor",
+      "publishedAt": "2026-02-05T19:13:38.341Z"
+    },
+    "dacia": {
+      "slug": "dacia-uygun-fiyatli-arac-secenekleriyle-one-cikiyor",
+      "publishedAt": "2026-02-05T19:13:38.341Z"
+    },
+    "show tv canlı yayın": {
+      "slug": "show-tv-canli-yayin-akisi-ve-veliaht-dizisi-ilgisi",
+      "publishedAt": "2026-02-05T19:13:38.341Z"
+    },
+    "kars": {
+      "slug": "karsta-son-gelismeler-egitimden-uyusturucu-operasyonlarina",
+      "publishedAt": "2026-02-05T19:13:38.342Z"
+    },
+    "aynı yağmur altında": {
+      "slug": "atvnin-yeni-dizisi-ayni-yagmur-altinda-basliyor",
+      "publishedAt": "2026-02-05T19:13:38.342Z"
+    },
+    "adnan kahveci": {
+      "slug": "adnan-kahveci-33-yil-sonra-mezari-basinda-anildi",
+      "publishedAt": "2026-02-05T19:13:38.342Z"
+    },
+    "hatay depremi": {
+      "slug": "hatay-depreminin-uzerinden-3-yil-gecti-anma-ve-hatirlatma-etkinlikleri-devam-edi",
+      "publishedAt": "2026-02-05T19:13:38.342Z"
+    },
+    "tahtalı barajı doluluk oranı": {
+      "slug": "tahtali-barajindaki-doluluk-orani-yuzde-10a-ulasti",
+      "publishedAt": "2026-02-05T19:13:38.343Z"
+    },
+    "denzel washington": {
+      "slug": "denzel-washington-sinema-dunyasinin-ikonu-adalet-2-ile-geri-donuyor",
+      "publishedAt": "2026-02-05T19:13:38.343Z"
     }
   },
-  "lastUpdated": "2026-02-05T10:10:52.803Z"
+  "lastUpdated": "2026-02-05T19:13:38.343Z"
 }

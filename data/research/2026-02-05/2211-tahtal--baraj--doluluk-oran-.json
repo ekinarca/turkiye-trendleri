@@ -1,0 +1,112 @@
+{
+  "query": "tahtalı barajı doluluk oranı",
+  "normalizedQuery": "tahtalı barajı doluluk oranı",
+  "researchedAt": "2026-02-05T22:11:38+03:00",
+  "sources": [
+    {
+      "title": "5 ŞUBAT 2026 İZSU İZMİR BARAJ DOLULUK ORANLARI | Gördes, Güzelhisar, Tahtalı İzmir baraj doluluk oranı yüzde kaç?",
+      "url": "https://www.gzt.com",
+      "publisher": "GZT",
+      "publishedAt": "Thu, 05 Feb 2026 12:01:16 GMT",
+      "snippet": "5 ŞUBAT 2026 İZSU İZMİR BARAJ DOLULUK ORANLARI | Gördes, Güzelhisar, Tahtalı İzmir baraj doluluk oranı yüzde kaç?&nbsp;&nbsp;GZT"
+    },
+    {
+      "title": "İzmir'in barajlarında son durum ne? Tahtalı'dan sevindiren haber",
+      "url": "https://www.gundemebakis.com",
+      "publisher": "Gündeme Bakış",
+      "publishedAt": "Thu, 05 Feb 2026 05:30:00 GMT",
+      "snippet": "İzmir'in barajlarında son durum ne? Tahtalı'dan sevindiren haber&nbsp;&nbsp;Gündeme Bakış"
+    },
+    {
+      "title": "İzmir’de yağışlar barajlara nefes aldırdı: Tahtalı yüzde 10’a ulaştı",
+      "url": "https://www.egesaati.com.tr",
+      "publisher": "Ege Saati",
+      "publishedAt": "Thu, 05 Feb 2026 08:57:00 GMT",
+      "snippet": "İzmir’de yağışlar barajlara nefes aldırdı: Tahtalı yüzde 10’a ulaştı&nbsp;&nbsp;Ege Saati"
+    },
+    {
+      "title": "İzmir'in barajlarında yağmur bereketi... Son durum ne?",
+      "url": "https://www.egedesonsoz.com",
+      "publisher": "Ege'de Sonsöz",
+      "publishedAt": "Thu, 05 Feb 2026 06:31:00 GMT",
+      "snippet": "İzmir'in barajlarında yağmur bereketi... Son durum ne?&nbsp;&nbsp;Ege'de Sonsöz"
+    },
+    {
+      "title": "İzmir Barajlarında Kısmi Artış: Gördes Alarm Vermeyi Sürdürüyor",
+      "url": "https://www.gazetemizmir.com",
+      "publisher": "Gazetem İzmir",
+      "publishedAt": "Thu, 05 Feb 2026 10:03:00 GMT",
+      "snippet": "İzmir Barajlarında Kısmi Artış: Gördes Alarm Vermeyi Sürdürüyor&nbsp;&nbsp;Gazetem İzmir"
+    },
+    {
+      "title": "Sağanak yağışlar İzmir'deki barajlara nefes aldırdı ancak risk sürüyor",
+      "url": "https://www.egeyedair.com",
+      "publisher": "Ege'ye Dair",
+      "publishedAt": "Thu, 05 Feb 2026 10:47:00 GMT",
+      "snippet": "Sağanak yağışlar İzmir'deki barajlara nefes aldırdı ancak risk sürüyor&nbsp;&nbsp;Ege'ye Dair"
+    },
+    {
+      "title": "Müjde! Yağışlar İzmir’e can suyu oldu",
+      "url": "https://halktv.com.tr",
+      "publisher": "Halk TV",
+      "publishedAt": "Thu, 05 Feb 2026 06:23:49 GMT",
+      "snippet": "Müjde! Yağışlar İzmir’e can suyu oldu&nbsp;&nbsp;Halk TV"
+    },
+    {
+      "title": "Tahtalı Barajı küllerinden doğuyor",
+      "url": "https://www.yeniasir.com.tr",
+      "publisher": "Yeni Asır",
+      "publishedAt": "Thu, 05 Feb 2026 03:50:15 GMT",
+      "snippet": "Tahtalı Barajı küllerinden doğuyor&nbsp;&nbsp;Yeni Asır"
+    },
+    {
+      "title": "Tahtalı Barajı yüzde 10'u gördü",
+      "url": "https://www.egeligazete.com",
+      "publisher": "Egeli Gazete",
+      "publishedAt": "Thu, 05 Feb 2026 08:07:40 GMT",
+      "snippet": "Tahtalı Barajı yüzde 10'u gördü&nbsp;&nbsp;Egeli Gazete"
+    },
+    {
+      "title": "Yağışlar İzmir barajlarına yaradı: Doluluk oranlarında artış",
+      "url": "https://www.izmirtime35.com",
+      "publisher": "İzmir Time 35",
+      "publishedAt": "Thu, 05 Feb 2026 06:57:00 GMT",
+      "snippet": "Yağışlar İzmir barajlarına yaradı: Doluluk oranlarında artış&nbsp;&nbsp;İzmir Time 35"
+    },
+    {
+      "title": "İzmir'de su sorunu ortadan kalkıyor mu? En büyük barajı Tahtalı’da seviye yüzde 10’a yükseldi",
+      "url": "https://www.karar.com",
+      "publisher": "KARAR",
+      "publishedAt": "Thu, 05 Feb 2026 07:25:41 GMT",
+      "snippet": "İzmir'de su sorunu ortadan kalkıyor mu? En büyük barajı Tahtalı’da seviye yüzde 10’a yükseldi&nbsp;&nbsp;KARAR"
+    },
+    {
+      "title": "Sağanak sonrası İzmir barajlarında son tablo açıklandı",
+      "url": "https://www.izmirdesondakika.com.tr",
+      "publisher": "izmirdesondakika.com.tr",
+      "publishedAt": "Thu, 05 Feb 2026 07:44:00 GMT",
+      "snippet": "Sağanak sonrası İzmir barajlarında son tablo açıklandı&nbsp;&nbsp;izmirdesondakika.com.tr"
+    },
+    {
+      "title": "Yağışlar geri geliyor barajlar ne durumda? İZSU açıkladı: 5 Şubat İzmir baraj seviyeleri",
+      "url": "https://www.egetelgraf.com",
+      "publisher": "Ege Telgraf",
+      "publishedAt": "Thu, 05 Feb 2026 07:53:00 GMT",
+      "snippet": "Yağışlar geri geliyor barajlar ne durumda? İZSU açıkladı: 5 Şubat İzmir baraj seviyeleri&nbsp;&nbsp;Ege Telgraf"
+    },
+    {
+      "title": "Baraj doluluk oranı 5 Şubat 2026: İzmir baraj doluluk oranı son durumu nedir, kaç oldu?",
+      "url": "https://www.yenibakishaber.com",
+      "publisher": "yenibakishaber.com",
+      "publishedAt": "Thu, 05 Feb 2026 08:36:00 GMT",
+      "snippet": "Baraj doluluk oranı 5 Şubat 2026: İzmir baraj doluluk oranı son durumu nedir, kaç oldu?&nbsp;&nbsp;yenibakishaber.com"
+    },
+    {
+      "title": "İzmir'de barajlar ölüm uykusundan uyandı",
+      "url": "https://dokuzeylul.com",
+      "publisher": "dokuzeylul.com",
+      "publishedAt": "Thu, 05 Feb 2026 07:17:00 GMT",
+      "snippet": "İzmir'de barajlar ölüm uykusundan uyandı&nbsp;&nbsp;dokuzeylul.com"
+    }
+  ]
+}
