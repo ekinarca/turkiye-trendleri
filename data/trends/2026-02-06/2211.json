@@ -1,0 +1,56 @@
+{
+  "fetchedAt": "2026-02-06T22:11:20+03:00",
+  "region": "TR",
+  "trends": [
+    {
+      "query": "union berlin - eintracht frankfurt",
+      "rank": 1,
+      "timestamp": "2026-02-06T22:11:20+03:00"
+    },
+    {
+      "query": "ali kaya",
+      "rank": 2,
+      "timestamp": "2026-02-06T22:11:20+03:00"
+    },
+    {
+      "query": "al nassr - ıttihad fc",
+      "rank": 3,
+      "timestamp": "2026-02-06T22:11:20+03:00"
+    },
+    {
+      "query": "mamadou fall",
+      "rank": 4,
+      "timestamp": "2026-02-06T22:11:20+03:00"
+    },
+    {
+      "query": "kanal d izle",
+      "rank": 5,
+      "timestamp": "2026-02-06T22:11:20+03:00"
+    },
+    {
+      "query": "taşacak bu deniz 17 bölüm izle",
+      "rank": 6,
+      "timestamp": "2026-02-06T22:11:20+03:00"
+    },
+    {
+      "query": "hülya koçyiğit",
+      "rank": 7,
+      "timestamp": "2026-02-06T22:11:20+03:00"
+    },
+    {
+      "query": "deniz baysal",
+      "rank": 8,
+      "timestamp": "2026-02-06T22:11:20+03:00"
+    },
+    {
+      "query": "burcu cavrar",
+      "rank": 9,
+      "timestamp": "2026-02-06T22:11:20+03:00"
+    },
+    {
+      "query": "suudi arabistan pro lig",
+      "rank": 10,
+      "timestamp": "2026-02-06T22:11:20+03:00"
+    }
+  ]
+}
